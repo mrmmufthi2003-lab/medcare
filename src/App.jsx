@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 import emailjs from '@emailjs/browser';
 import { jsPDF } from 'jspdf';
+import AiChatAgent from './components/AiChatAgent';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -600,54 +601,93 @@ export default function App() {
         {/* ADMIN DASHBOARD PAGE */}
         {activeTab === 'admin_dashboard' && userRole === 'admin' && (
           <div style={{ background: '#ffffff', padding: '30px', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', boxSizing: 'border-box' }}>
-            <h2 style={{ fontSize: '26px', fontWeight: '900', marginBottom: '20px', color: '#0f172a' }}>⚡ MedCare Admin Management System</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
+              <h2 style={{ fontSize: '26px', fontWeight: '900', margin: 0, color: '#0f172a' }}>⚡ MedCare Admin Management System</h2>
+              <button onClick={fetchAdminData} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '10px 18px', borderRadius: '10px', fontWeight: '800', cursor: 'pointer' }}>
+                🔄 Refresh Data
+              </button>
+            </div>
             
-            <h3 style={{ fontSize: '18px', fontWeight: '800', marginTop: '20px', color: '#2563eb' }}>Recent Booked Appointments ({appointments.length})</h3>
+            <h3 style={{ fontSize: '18px', fontWeight: '800', marginTop: '20px', color: '#2563eb' }}>
+              Recent Booked Appointments ({appointments.length})
+            </h3>
             <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', minWidth: '600px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '12px', minWidth: '700px' }}>
                 <thead>
-                  <tr style={{ background: '#f8fafc', borderBottom: '2px solid #cbd5e1', textAlign: 'left' }}>
+                  <tr style={{ background: '#f8fafc', borderBottom: '2px solid #cbd5e1', textAlign: 'left', color: '#334155', fontSize: '14px' }}>
                     <th style={{ padding: '12px' }}>Patient</th>
                     <th style={{ padding: '12px' }}>Phone</th>
                     <th style={{ padding: '12px' }}>Email</th>
-                    <th style={{ padding: '12px' }}>Doctor</th>
-                    <th style={{ padding: '12px' }}>Dept</th>
+                    <th style={{ padding: '12px' }}>Doctor / Scan</th>
+                    <th style={{ padding: '12px' }}>Department</th>
+                    <th style={{ padding: '12px' }}>Status</th>
+                    <th style={{ padding: '12px' }}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {appointments.map(a => (
-                    <tr key={a.id} style={{ borderBottom: '1px solid #e2e8f0' }}>
-                      <td style={{ padding: '12px', fontWeight: '700' }}>{a.patient_name}</td>
+                    <tr key={a.id} style={{ borderBottom: '1px solid #e2e8f0', fontSize: '14px' }}>
+                      <td style={{ padding: '12px', fontWeight: '700', color: '#0f172a' }}>{a.patient_name}</td>
                       <td style={{ padding: '12px' }}>{a.phone_number}</td>
-                      <td style={{ padding: '12px' }}>{a.Email}</td>
-                      <td style={{ padding: '12px' }}>{a.doctor_name}</td>
+                      <td style={{ padding: '12px' }}>{a.Email || '-'}</td>
+                      <td style={{ padding: '12px' }}>{a.doctor_name || '-'}</td>
                       <td style={{ padding: '12px' }}>{a.department}</td>
+                      <td style={{ padding: '12px' }}>
+                        <span style={{ 
+                          background: a.status === 'Cancelled' ? '#fef2f2' : '#f0fdf4', 
+                          color: a.status === 'Cancelled' ? '#dc2626' : '#166534', 
+                          padding: '4px 10px', 
+                          borderRadius: '8px', 
+                          fontWeight: '800', 
+                          fontSize: '12px' 
+                        }}>
+                          {a.status || 'Confirmed'}
+                        </span>
+                      </td>
+                      <td style={{ padding: '12px' }}>
+                        <button 
+                          onClick={async () => {
+                            if (confirm(`Are you sure you want to delete appointment for ${a.patient_name}?`)) {
+                              await supabase.from('appointments').delete().eq('id', a.id);
+                              fetchAdminData();
+                            }
+                          }} 
+                          style={{ background: '#fee2e2', color: '#dc2626', border: 'none', padding: '6px 12px', borderRadius: '6px', fontWeight: '800', cursor: 'pointer', fontSize: '12px' }}
+                        >
+                          Delete 🗑️
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            <h3 style={{ fontSize: '18px', fontWeight: '800', marginTop: '30px', color: '#10b981' }}>Generated Patient Lab Reports ({labReports.length})</h3>
+            <h3 style={{ fontSize: '18px', fontWeight: '800', marginTop: '35px', color: '#10b981' }}>
+              Generated Patient Lab Reports ({labReports.length})
+            </h3>
             <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', minWidth: '600px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '12px', minWidth: '600px' }}>
                 <thead>
-                  <tr style={{ background: '#f8fafc', borderBottom: '2px solid #cbd5e1', textAlign: 'left' }}>
+                  <tr style={{ background: '#f8fafc', borderBottom: '2px solid #cbd5e1', textAlign: 'left', color: '#334155', fontSize: '14px' }}>
                     <th style={{ padding: '12px' }}>Patient ID</th>
                     <th style={{ padding: '12px' }}>Name</th>
-                    <th style={{ padding: '12px' }}>Test Name</th>
+                    <th style={{ padding: '12px' }}>Test / Scan Name</th>
                     <th style={{ padding: '12px' }}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {labReports.map(r => (
-                    <tr key={r.id} style={{ borderBottom: '1px solid #e2e8f0' }}>
-                      <td style={{ padding: '12px', fontWeight: '800' }}>{r.patient_id}</td>
-                      <td style={{ padding: '12px' }}>{r.patient_name}</td>
+                    <tr key={r.id} style={{ borderBottom: '1px solid #e2e8f0', fontSize: '14px' }}>
+                      <td style={{ padding: '12px', fontWeight: '800', color: '#2563eb' }}>{r.patient_id}</td>
+                      <td style={{ padding: '12px', fontWeight: '700' }}>{r.patient_name}</td>
                       <td style={{ padding: '12px' }}>{r.test_name}</td>
                       <td style={{ padding: '12px' }}>
-                        <button onClick={() => generatePDFReport(r)} style={{ color: '#2563eb', fontWeight: '800', background: '#eff6ff', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer' }}>
-                          PDF 📄
+                        <button 
+                          onClick={() => generatePDFReport(r)} 
+                          style={{ color: '#2563eb', fontWeight: '800', background: '#eff6ff', border: 'none', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px' }}
+                        >
+                          Download PDF 📄
                         </button>
                       </td>
                     </tr>
@@ -664,6 +704,13 @@ export default function App() {
       <footer style={{ background: '#0f172a', color: '#94a3b8', padding: '30px 24px', textAlign: 'center', marginTop: '60px', borderTop: '1px solid #334155' }}>
         <p style={{ margin: 0, fontWeight: '700', fontSize: '14px' }}>© 2026 MedCare Healthcare Network (No23, Uduvil Center Uduvil, Jaffna). All rights reserved.</p>
       </footer>
+
+      {/* Floating Autonomous AI Agent Widget */}
+      <AiChatAgent 
+        setActiveTab={setActiveTab} 
+        setSelectedDept={setSelectedDept} 
+        setDoctorName={setDoctorName} 
+      />
     </div>
   );
 }
