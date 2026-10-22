@@ -893,30 +893,31 @@ export default function App() {
             ].map((item) => {
               const isActive = activeTab === item.id;
               return (
-                <button
-                  key={item.id}
-                  onClick={item.action ? item.action : () => setActiveTab(item.id)}
-                  style={{
-                    padding: '9px 14px',
-                    borderRadius: '8px',
-                    border: 'none',
-                    background: isActive ? '#2563eb' : 'transparent',
-                    color: isActive ? '#ffffff' : '#334155',
-                    fontWeight: '800',
-                    fontSize: '13px',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    transition: 'all 0.2s'
-                  }}
-                  onMouseOver={e => { if(!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
-                  onMouseOut={e => { if(!isActive) e.currentTarget.style.background = 'transparent'; }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
-
+  <button
+    key={item.id}
+    onClick={item.action ? item.action : () => setActiveTab(item.id)}
+    style={{
+      padding: '9px 14px',
+      borderRadius: '8px',
+      border: 'none',
+      background: isActive ? '#2563eb' : 'transparent',
+      color: isActive ? '#ffffff' : '#334155',
+      fontWeight: '800',
+      fontSize: '13px',
+      cursor: 'pointer',
+      whiteSpace: 'nowrap',
+      flexShrink: 0,
+      transition: 'all 0.2s',
+    }}
+    onMouseOver={e => { if (!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
+    onMouseOut={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
+  >
+   {item.label}
+  </button>
+);
+  })
+}
+</nav>
           <button 
             onClick={() => { if (isLoggedIn) { setIsLoggedIn(false); setUserRole(null); setActiveTab('home'); } else { setShowLoginModal(true); } }} 
             style={{ background: isLoggedIn ? '#dc2626' : '#2563eb', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '10px', fontWeight: '800', cursor: 'pointer', fontSize: '13px', boxShadow: '0 4px 12px rgba(37,99,235,0.2)', whiteSpace: 'nowrap' }}
