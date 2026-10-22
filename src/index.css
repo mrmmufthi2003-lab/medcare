@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+.nav-scroll {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
