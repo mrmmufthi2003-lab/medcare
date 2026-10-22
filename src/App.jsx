@@ -871,7 +871,7 @@ export default function App() {
           </div>
 
           {/* Nav Items */}
-         <nav className="nav-scroll flex flex-nowrap items-center gap-2 overflow-x-auto max-w-full px-2 py-2" style={{ display: 'flex', overflowX: 'auto', flexWrap: 'nowrap', maxWidth: '100%', padding: '2px 8px' }}>
+        <nav style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', gap: '8px', padding: '8px', width: '100%', WebkitOverflowScrolling: 'touch' }}>
             {[
               { id: 'home', label: 'HOME' },
               { id: 'queue', label: 'LIVE QUEUE ⏱️' },
