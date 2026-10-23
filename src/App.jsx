@@ -830,14 +830,23 @@ export default function App() {
 
   return (
     <div style={{ 
-      fontFamily: "'Plus Jakarta Sans', sans-serif", 
-      background: '#0f172a',
+      width: '100%', 
       minHeight: '100vh', 
-      display: 'flex', 
-      flexDirection: 'column',
-      color: '#0f172a'
+      background: '#0f172a',
+      overflowX: 'hidden'
     }}>
       <style>{`
+        /* MOBILE DESKTOP VIEW FORCING WRAPPER */
+        @media screen and (max-width: 768px) {
+          .desktop-force-wrapper {
+            width: 1280px !important;
+            transform-origin: top left;
+            transform: scale(0.31);
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
         .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(203, 213, 225, 0.6); box-shadow: 0 10px 25px rgba(0,0,0,0.15); color: #0f172a; }
         .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(37,99,235,0.25); }
@@ -846,6 +855,17 @@ export default function App() {
         .pulse-badge { animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
       `}</style>
+
+      {/* MOBILE DESKTOP VIEW CONTAINER */}
+      <div className="desktop-force-wrapper" style={{ 
+        fontFamily: "'Plus Jakarta Sans', sans-serif", 
+        background: '#0f172a',
+        minHeight: '100vh', 
+        display: 'flex', 
+        flexDirection: 'column',
+        color: '#0f172a',
+        width: '100%'
+      }}>
 
       {/* Top Ribbon Bar */}
       <div style={{ background: '#090d16', color: '#94a3b8', padding: '6px 20px', fontSize: '11px', fontWeight: '700', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
@@ -871,7 +891,7 @@ export default function App() {
           </div>
 
           {/* Nav Items */}
-          <nav className="nav-scroll" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', gap: '8px', padding: '8px', width: '100%', WebkitOverflowScrolling: 'touch' }}>
+        <nav className="nav-scroll" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', gap: '8px', padding: '8px', alignItems: 'center' }}>
             {[
               { id: 'home', label: 'HOME' },
               { id: 'queue', label: 'LIVE QUEUE ⏱️' },
@@ -893,31 +913,31 @@ export default function App() {
             ].map((item) => {
               const isActive = activeTab === item.id;
               return (
-                <button
-                  key={item.id}
-                  onClick={item.action ? item.action : () => setActiveTab(item.id)}
-                  style={{
-                    padding: '9px 14px',
-                    borderRadius: '8px',
-                    border: 'none',
-                    background: isActive ? '#2563eb' : 'transparent',
-                    color: isActive ? '#ffffff' : '#334155',
-                    fontWeight: '800',
-                    fontSize: '13px',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0,
-                    transition: 'all 0.2s',
-                  }}
-                  onMouseOver={e => { if (!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
-                  onMouseOut={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
-
+  <button
+    key={item.id}
+    onClick={item.action ? item.action : () => setActiveTab(item.id)}
+    style={{
+      padding: '9px 14px',
+      borderRadius: '8px',
+      border: 'none',
+      background: isActive ? '#2563eb' : 'transparent',
+      color: isActive ? '#ffffff' : '#334155',
+      fontWeight: '800',
+      fontSize: '13px',
+      cursor: 'pointer',
+      whiteSpace: 'nowrap',
+      flexShrink: 0,
+      transition: 'all 0.2s',
+    }}
+    onMouseOver={e => { if (!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
+    onMouseOut={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
+  >
+   {item.label}
+  </button>
+);
+  })
+}
+</nav>
           <button 
             onClick={() => { if (isLoggedIn) { setIsLoggedIn(false); setUserRole(null); setActiveTab('home'); } else { setShowLoginModal(true); } }} 
             style={{ background: isLoggedIn ? '#dc2626' : '#2563eb', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '10px', fontWeight: '800', cursor: 'pointer', fontSize: '13px', boxShadow: '0 4px 12px rgba(37,99,235,0.2)', whiteSpace: 'nowrap' }}
@@ -1988,6 +2008,7 @@ export default function App() {
           <div>Designed & Developed for Mufthi (HNDIT Healthcare OS)</div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

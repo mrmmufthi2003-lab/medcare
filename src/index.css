@@ -5,6 +5,8 @@
   overflow-x: auto;
   flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-scroll::-webkit-scrollbar {
@@ -14,4 +16,10 @@
 .nav-scroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.nav-scroll button, 
+.nav-scroll a {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
