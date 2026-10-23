@@ -833,20 +833,12 @@ export default function App() {
       width: '100%', 
       minHeight: '100vh', 
       background: '#0f172a',
-      overflowX: 'hidden'
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
+      color: '#0f172a',
+      display: 'flex',
+      flexDirection: 'column'
     }}>
       <style>{`
-        /* MOBILE DESKTOP VIEW FORCING WRAPPER */
-        @media screen and (max-width: 768px) {
-          .desktop-force-wrapper {
-            width: 1280px !important;
-            transform-origin: top left;
-            transform: scale(0.31);
-            position: absolute;
-            left: 0;
-            top: 0;
-          }
-        }
         .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(203, 213, 225, 0.6); box-shadow: 0 10px 25px rgba(0,0,0,0.15); color: #0f172a; }
         .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(37,99,235,0.25); }
@@ -856,47 +848,36 @@ export default function App() {
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
       `}</style>
 
-      {/* MOBILE DESKTOP VIEW CONTAINER */}
-      <div className="desktop-force-wrapper" style={{ 
-        fontFamily: "'Plus Jakarta Sans', sans-serif", 
-        background: '#0f172a',
-        minHeight: '100vh', 
-        display: 'flex', 
-        flexDirection: 'column',
-        color: '#0f172a',
-        width: '100%'
-      }}>
-
       {/* Top Ribbon Bar */}
-      <div style={{ background: '#090d16', color: '#94a3b8', padding: '6px 20px', fontSize: '11px', fontWeight: '700', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <span>🔴 SRI LANKA MEDCARE HEALTH OS | EMERGENCY RESPONSE: SLA &lt; 7.8 Mins</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <button onClick={() => setShowSosModal(true)} style={{ background: '#dc2626', color: '#fff', border: 'none', padding: '3px 10px', borderRadius: '6px', fontWeight: '900', cursor: 'pointer', fontSize: '10px' }}>🚨 SOS AMBULANCE DISPATCH</button>
+      <div style={{ background: '#090d16', color: '#94a3b8', padding: '8px 16px', fontSize: '11px', fontWeight: '700', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <span>🔴 SRI LANKA MEDCARE HEALTH OS</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <button onClick={() => setShowSosModal(true)} style={{ background: '#dc2626', color: '#fff', border: 'none', padding: '4px 10px', borderRadius: '6px', fontWeight: '900', cursor: 'pointer', fontSize: '10px' }}>🚨 SOS AMBULANCE</button>
           <span style={{ color: isLoggedIn ? '#10b981' : '#f59e0b' }}>
-            {isLoggedIn ? `🟢 Logged in: ${email}` : '🔒 Guest Mode (Login Required to Book)'} | 📞 +94 11 234 5678
+            {isLoggedIn ? `🟢 ${email}` : '🔒 Guest Mode'}
           </span>
         </div>
       </div>
 
       {/* Official White Header Navbar */}
       <header style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 4px 15px rgba(0,0,0,0.08)' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '12px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '15px' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={() => setActiveTab('home')}>
-            <div style={{ width: '42px', height: '42px', background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', color: '#fff', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '22px', boxShadow: '0 4px 12px rgba(37,99,235,0.3)' }}>+</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={() => setActiveTab('home')}>
+            <div style={{ width: '38px', height: '38px', background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', color: '#fff', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '20px', boxShadow: '0 4px 12px rgba(37,99,235,0.3)' }}>+</div>
             <div>
-              <h1 style={{ fontSize: '18px', fontWeight: '900', margin: 0, color: '#0f172a', letterSpacing: '0.5px' }}>MEDCARE</h1>
-              <p style={{ fontSize: '10px', fontWeight: '800', margin: 0, color: '#2563eb', letterSpacing: '1px' }}>SRI LANKA</p>
+              <h1 style={{ fontSize: '16px', fontWeight: '900', margin: 0, color: '#0f172a', letterSpacing: '0.5px' }}>MEDCARE</h1>
+              <p style={{ fontSize: '9px', fontWeight: '800', margin: 0, color: '#2563eb', letterSpacing: '1px' }}>SRI LANKA</p>
             </div>
           </div>
 
           {/* Nav Items */}
-        <nav className="nav-scroll" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', gap: '8px', padding: '8px', alignItems: 'center' }}>
+          <nav className="nav-scroll" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', gap: '6px', padding: '4px', alignItems: 'center' }}>
             {[
               { id: 'home', label: 'HOME' },
-              { id: 'queue', label: 'LIVE QUEUE ⏱️' },
+              { id: 'queue', label: 'LIVE QUEUE' },
               { id: 'specialities', label: 'SPECIALITIES ▼', action: () => setShowSpecialitiesMenu(!showSpecialitiesMenu) },
-              { id: 'doctors', label: 'DOCTORS (100+)' },
+              { id: 'doctors', label: 'DOCTORS' },
               { id: 'ipd', label: 'IPD 🏥' },
               { id: 'homecare', label: 'HOMECARE 🏠' },
               { id: 'telemedcare', label: 'teleMEDCARE 📹' },
@@ -909,54 +890,51 @@ export default function App() {
               { id: 'referral', label: 'REFERRALS' },
               { id: 'payments', label: 'PAYMENTS 💳', action: () => setShowPaymentModal(true) },
               { id: 'reports', label: 'REPORTS 📥' },
-              ...(userRole === 'admin' ? [{ id: 'admin_dashboard', label: 'ADMIN DASHBOARD ⚙️' }] : [])
+              ...(userRole === 'admin' ? [{ id: 'admin_dashboard', label: 'ADMIN ⚙️' }] : [])
             ].map((item) => {
               const isActive = activeTab === item.id;
               return (
-  <button
-    key={item.id}
-    onClick={item.action ? item.action : () => setActiveTab(item.id)}
-    style={{
-      padding: '9px 14px',
-      borderRadius: '8px',
-      border: 'none',
-      background: isActive ? '#2563eb' : 'transparent',
-      color: isActive ? '#ffffff' : '#334155',
-      fontWeight: '800',
-      fontSize: '13px',
-      cursor: 'pointer',
-      whiteSpace: 'nowrap',
-      flexShrink: 0,
-      transition: 'all 0.2s',
-    }}
-    onMouseOver={e => { if (!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
-    onMouseOut={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
-  >
-   {item.label}
-  </button>
-);
-  })
-}
-</nav>
+                <button
+                  key={item.id}
+                  onClick={item.action ? item.action : () => setActiveTab(item.id)}
+                  style={{
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                    border: 'none',
+                    background: isActive ? '#2563eb' : 'transparent',
+                    color: isActive ? '#ffffff' : '#334155',
+                    fontWeight: '800',
+                    fontSize: '12px',
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+
           <button 
             onClick={() => { if (isLoggedIn) { setIsLoggedIn(false); setUserRole(null); setActiveTab('home'); } else { setShowLoginModal(true); } }} 
-            style={{ background: isLoggedIn ? '#dc2626' : '#2563eb', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '10px', fontWeight: '800', cursor: 'pointer', fontSize: '13px', boxShadow: '0 4px 12px rgba(37,99,235,0.2)', whiteSpace: 'nowrap' }}
+            style={{ background: isLoggedIn ? '#dc2626' : '#2563eb', color: '#fff', border: 'none', padding: '8px 14px', borderRadius: '8px', fontWeight: '800', cursor: 'pointer', fontSize: '12px', whiteSpace: 'nowrap' }}
           >
-            {isLoggedIn ? `Logout (${userRole})` : 'Portal Login'}
+            {isLoggedIn ? 'Logout' : 'Login'}
           </button>
         </div>
 
         {/* SPECIALITIES MEGA MENU DROPDOWN */}
         {showSpecialitiesMenu && (
-          <div style={{ background: '#ffffff', borderTop: '2px solid #2563eb', borderBottom: '1px solid #cbd5e1', padding: '24px 30px', boxShadow: '0 20px 40px rgba(0,0,0,0.15)', position: 'absolute', width: '100%', left: 0, top: '100%', zIndex: 1100 }}>
+          <div style={{ background: '#ffffff', borderTop: '2px solid #2563eb', borderBottom: '1px solid #cbd5e1', padding: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.15)', position: 'absolute', width: '100%', left: 0, top: '100%', zIndex: 1100 }}>
             <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#0f172a', margin: 0 }}>All Medical Specialities</h3>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                <h3 style={{ fontSize: '15px', fontWeight: '900', color: '#0f172a', margin: 0 }}>All Medical Specialities</h3>
                 <button onClick={() => setShowSpecialitiesMenu(false)} style={{ background: 'none', border: 'none', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', color: '#ef4444' }}>Close ✖</button>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '10px', maxHeight: '300px', overflowY: 'auto' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '8px', maxHeight: '250px', overflowY: 'auto' }}>
                 {departmentNames.map((dept, idx) => (
-                  <div key={idx} onClick={() => { setSelectedDept(dept); setActiveTab('book'); setShowSpecialitiesMenu(false); }} style={{ padding: '8px 12px', borderRadius: '8px', background: '#f8fafc', color: '#1e293b', fontSize: '13px', fontWeight: '700', cursor: 'pointer', border: '1px solid #cbd5e1', transition: 'all 0.2s' }} onMouseOver={e=>e.currentTarget.style.background='#eff6ff'} onMouseOut={e=>e.currentTarget.style.background='#f8fafc'}>
+                  <div key={idx} onClick={() => { setSelectedDept(dept); setActiveTab('book'); setShowSpecialitiesMenu(false); }} style={{ padding: '8px 10px', borderRadius: '8px', background: '#f8fafc', color: '#1e293b', fontSize: '12px', fontWeight: '700', cursor: 'pointer', border: '1px solid #cbd5e1' }}>
                     ● {dept}
                   </div>
                 ))}
@@ -968,38 +946,37 @@ export default function App() {
 
       {/* SOS EMERGENCY AMBULANCE MODAL */}
       {showSosModal && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(220,38,38,0.85)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 3000 }}>
-          <div style={{ background: '#fff', padding: '35px', borderRadius: '24px', width: '100%', maxWidth: '420px', textAlign: 'center', boxShadow: '0 25px 50px rgba(0,0,0,0.5)', position: 'relative' }}>
-            <button onClick={() => setShowSosModal(false)} style={{ position: 'absolute', top: '15px', right: '20px', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>✖</button>
-            <div style={{ fontSize: '60px' }}>🚑</div>
-            <h2 style={{ fontSize: '24px', fontWeight: '900', color: '#dc2626', margin: '10px 0 6px 0' }}>EMERGENCY SOS ACTIVE</h2>
-            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>Nearest MedCare ICU Ambulance is being dispatched to your GPS location.</p>
-            <div style={{ background: '#fef2f2', border: '1px solid #fca5a5', padding: '15px', borderRadius: '14px', marginBottom: '20px' }}>
-              <span style={{ fontSize: '12px', fontWeight: '800', color: '#991b1b' }}>CALL EMERGENCY HOTLINE DIRECTLY:</span>
-              <h3 style={{ fontSize: '26px', fontWeight: '900', color: '#dc2626', margin: '4px 0' }}>+94 11 234 5678</h3>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(220,38,38,0.85)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 3000, padding: '16px' }}>
+          <div style={{ background: '#fff', padding: '25px', borderRadius: '20px', width: '100%', maxWidth: '400px', textAlign: 'center', position: 'relative' }}>
+            <button onClick={() => setShowSosModal(false)} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>✖</button>
+            <div style={{ fontSize: '50px' }}>🚑</div>
+            <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#dc2626', margin: '10px 0 6px 0' }}>EMERGENCY SOS ACTIVE</h2>
+            <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>Nearest MedCare ICU Ambulance is being dispatched to your location.</p>
+            <div style={{ background: '#fef2f2', border: '1px solid #fca5a5', padding: '12px', borderRadius: '12px', marginBottom: '16px' }}>
+              <span style={{ fontSize: '11px', fontWeight: '800', color: '#991b1b' }}>CALL EMERGENCY HOTLINE:</span>
+              <h3 style={{ fontSize: '22px', fontWeight: '900', color: '#dc2626', margin: '4px 0' }}>+94 11 234 5678</h3>
             </div>
-            <button onClick={() => { alert("🚨 Ambulance Alert Sent to Colombo Central Dispatch!"); setShowSosModal(false); }} style={{ width: '100%', background: '#dc2626', color: '#fff', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: '900', cursor: 'pointer' }}>Dispatch ICU Ambulance Now 🚨</button>
+            <button onClick={() => { alert("🚨 Ambulance Alert Sent to Colombo Central Dispatch!"); setShowSosModal(false); }} style={{ width: '100%', background: '#dc2626', color: '#fff', border: 'none', padding: '12px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer' }}>Dispatch ICU Ambulance Now 🚨</button>
           </div>
         </div>
       )}
 
       {/* PAYMENT GATEWAY MODAL */}
       {showPaymentModal && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000 }}>
-          <div style={{ background: '#fff', padding: '35px', borderRadius: '24px', width: '100%', maxWidth: '420px', boxShadow: '0 25px 50px rgba(0,0,0,0.5)', position: 'relative' }}>
-            <button onClick={() => { setShowPaymentModal(false); setPaymentSuccess(false); }} style={{ position: 'absolute', top: '15px', right: '20px', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>✖</button>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
+          <div style={{ background: '#fff', padding: '25px', borderRadius: '20px', width: '100%', maxWidth: '400px', position: 'relative' }}>
+            <button onClick={() => { setShowPaymentModal(false); setPaymentSuccess(false); }} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>✖</button>
             
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-              <span style={{ background: '#dbeafe', color: '#1e40af', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>💳 PAYHERE LKR GATEWAY</span>
-              <h2 style={{ fontSize: '22px', fontWeight: '900', color: '#0f172a', margin: '8px 0 2px 0' }}>Online Payment Gateway</h2>
-              <p style={{ fontSize: '12px', color: '#64748b' }}>Secure LKR card processing for MedCare Sri Lanka</p>
+            <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+              <span style={{ background: '#dbeafe', color: '#1e40af', padding: '4px 10px', borderRadius: '20px', fontSize: '10px', fontWeight: '800' }}>💳 PAYHERE LKR GATEWAY</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '6px 0 2px 0' }}>Online Payment Gateway</h2>
             </div>
 
             {!paymentSuccess ? (
-              <form onSubmit={handleProcessPayment} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <form onSubmit={handleProcessPayment} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Payment Purpose</label>
-                  <select value={paymentPurpose} onChange={e=>setPaymentPurpose(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #cbd5e1' }}>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Payment Purpose</label>
+                  <select value={paymentPurpose} onChange={e=>setPaymentPurpose(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }}>
                     <option value="Doctor Consultation">Doctor Consultation Fee (LKR 3,500)</option>
                     <option value="Lab Test Payment">Lab Diagnostic Test (LKR 5,200)</option>
                     <option value="IPD Advance">IPD Room Advance Payment (LKR 15,000)</option>
@@ -1007,36 +984,36 @@ export default function App() {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Amount (LKR)</label>
-                  <input type="text" value={`LKR ${paymentAmount}`} readOnly style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#f8fafc', fontWeight: '900', color: '#2563eb' }} />
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Amount (LKR)</label>
+                  <input type="text" value={`LKR ${paymentAmount}`} readOnly style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', background: '#f8fafc', fontWeight: '900', color: '#2563eb', fontSize: '13px' }} />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Card Number</label>
-                  <input type="text" placeholder="4111 •••• •••• 1111" value={cardNumber} onChange={e=>setCardNumber(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Card Number</label>
+                  <input type="text" placeholder="4111 •••• •••• 1111" value={cardNumber} onChange={e=>setCardNumber(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Expiry</label>
-                    <input type="text" placeholder="MM/YY" value={cardExpiry} onChange={e=>setCardExpiry(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>Expiry</label>
+                    <input type="text" placeholder="MM/YY" value={cardExpiry} onChange={e=>setCardExpiry(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>CVC / CVV</label>
-                    <input type="password" placeholder="123" value={cardCvc} onChange={e=>setCardCvc(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: '800', color: '#334155', marginBottom: '4px' }}>CVC / CVV</label>
+                    <input type="password" placeholder="123" value={cardCvc} onChange={e=>setCardCvc(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                 </div>
 
-                <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '13px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer', marginTop: '6px' }}>
+                <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', marginTop: '6px', fontSize: '13px' }}>
                   {loading ? 'Processing LKR Payment...' : 'Pay LKR Now 🔒'}
                 </button>
               </form>
             ) : (
-              <div style={{ textAlign: 'center', padding: '20px 0' }}>
-                <div style={{ fontSize: '50px' }}>🎉</div>
-                <h3 style={{ color: '#16a34a', fontWeight: '900', margin: '10px 0 4px 0' }}>Payment Successful!</h3>
-                <p style={{ fontSize: '13px', color: '#64748b' }}>Transaction ID: TXN-{Math.floor(100000 + Math.random() * 900000)}</p>
-                <button onClick={() => setShowPaymentModal(false)} style={{ background: '#0f172a', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '10px', fontWeight: '800', marginTop: '14px', cursor: 'pointer' }}>Close Gateway</button>
+              <div style={{ textAlign: 'center', padding: '15px 0' }}>
+                <div style={{ fontSize: '40px' }}>🎉</div>
+                <h3 style={{ color: '#16a34a', fontWeight: '900', margin: '8px 0 4px 0' }}>Payment Successful!</h3>
+                <p style={{ fontSize: '12px', color: '#64748b' }}>Transaction ID: TXN-{Math.floor(100000 + Math.random() * 900000)}</p>
+                <button onClick={() => setShowPaymentModal(false)} style={{ background: '#0f172a', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '8px', fontWeight: '800', marginTop: '12px', cursor: 'pointer', fontSize: '12px' }}>Close</button>
               </div>
             )}
           </div>
@@ -1045,18 +1022,18 @@ export default function App() {
 
       {/* LOGIN MODAL */}
       {showLoginModal && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000 }}>
-          <div style={{ background: '#fff', padding: '35px', borderRadius: '24px', width: '100%', maxWidth: '380px', boxShadow: '0 25px 50px rgba(0,0,0,0.5)', position: 'relative' }}>
-            <button onClick={() => setShowLoginModal(false)} style={{ position: 'absolute', top: '15px', right: '20px', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>✖</button>
-            <h2 style={{ fontSize: '22px', fontWeight: '900', color: '#0f172a', marginBottom: '18px', textAlign: 'center' }}>Portal Login</h2>
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '18px' }}>
-              <button onClick={() => setLoginType('patient')} style={{ flex: 1, padding: '10px', borderRadius: '10px', border: 'none', background: loginType === 'patient' ? '#2563eb' : '#f1f5f9', color: loginType === 'patient' ? '#fff' : '#475569', fontWeight: '800', cursor: 'pointer' }}>Patient</button>
-              <button onClick={() => setLoginType('admin')} style={{ flex: 1, padding: '10px', borderRadius: '10px', border: 'none', background: loginType === 'admin' ? '#ef4444' : '#f1f5f9', color: loginType === 'admin' ? '#fff' : '#475569', fontWeight: '800', cursor: 'pointer' }}>Admin</button>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '16px' }}>
+          <div style={{ background: '#fff', padding: '25px', borderRadius: '20px', width: '100%', maxWidth: '360px', position: 'relative' }}>
+            <button onClick={() => setShowLoginModal(false)} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer' }}>✖</button>
+            <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginBottom: '16px', textAlign: 'center' }}>Portal Login</h2>
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+              <button onClick={() => setLoginType('patient')} style={{ flex: 1, padding: '8px', borderRadius: '8px', border: 'none', background: loginType === 'patient' ? '#2563eb' : '#f1f5f9', color: loginType === 'patient' ? '#fff' : '#475569', fontWeight: '800', cursor: 'pointer', fontSize: '12px' }}>Patient</button>
+              <button onClick={() => setLoginType('admin')} style={{ flex: 1, padding: '8px', borderRadius: '8px', border: 'none', background: loginType === 'admin' ? '#ef4444' : '#f1f5f9', color: loginType === 'admin' ? '#fff' : '#475569', fontWeight: '800', cursor: 'pointer', fontSize: '12px' }}>Admin</button>
             </div>
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <input type="email" placeholder={loginType === 'admin' ? 'admin@medcare.com' : 'Email Address'} value={email} onChange={e => setEmail(e.target.value)} required style={{ padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
-              <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required style={{ padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
-              <button type="submit" style={{ background: loginType === 'admin' ? '#ef4444' : '#2563eb', color: '#fff', border: 'none', padding: '13px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer' }}>Login Now 🚀</button>
+            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <input type="email" placeholder={loginType === 'admin' ? 'admin@medcare.com' : 'Email Address'} value={email} onChange={e => setEmail(e.target.value)} required style={{ padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+              <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required style={{ padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+              <button type="submit" style={{ background: loginType === 'admin' ? '#ef4444' : '#2563eb', color: '#fff', border: 'none', padding: '11px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', fontSize: '13px' }}>Login Now 🚀</button>
             </form>
           </div>
         </div>
@@ -1069,50 +1046,47 @@ export default function App() {
         {activeTab === 'home' && (
           <div>
             <div style={{ 
-              backgroundImage: `linear-gradient(rgba(10, 15, 30, 0.75), rgba(10, 15, 30, 0.85)), url("${heroBgUrl}")`,
+              backgroundImage: `linear-gradient(rgba(10, 15, 30, 0.8), rgba(10, 15, 30, 0.85)), url("${heroBgUrl}")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              minHeight: '480px',
-              padding: '60px 24px 80px 24px',
+              padding: '40px 16px 50px 16px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              position: 'relative'
+              textAlign: 'center'
             }}>
               
-              <div style={{ textAlign: 'center', color: '#ffffff', marginBottom: '40px', maxWidth: '850px' }}>
-                <span style={{ fontSize: '13px', fontWeight: '800', letterSpacing: '2px', color: '#93c5fd', textTransform: 'uppercase' }}>Advanced Healthcare Network</span>
-                <h1 style={{ fontSize: '42px', fontWeight: '900', margin: '10px 0 12px 0', fontFamily: 'serif', letterSpacing: '0.5px' }}>
+              <div style={{ color: '#ffffff', marginBottom: '24px', maxWidth: '800px' }}>
+                <span style={{ fontSize: '11px', fontWeight: '800', letterSpacing: '1.5px', color: '#93c5fd', textTransform: 'uppercase' }}>Advanced Healthcare Network</span>
+                <h1 style={{ fontSize: '28px', fontWeight: '900', margin: '8px 0 10px 0', fontFamily: 'serif', lineHeight: '1.2' }}>
                   Advanced Endoscopy & Gastroenterology Center
                 </h1>
-                <p style={{ fontSize: '15px', color: '#cbd5e1', margin: 0 }}>
+                <p style={{ fontSize: '13px', color: '#cbd5e1', margin: 0, lineHeight: '1.5' }}>
                   World-class clinical expertise, advanced diagnostics, and compassionate patient care across Sri Lanka & Middle East.
                 </p>
               </div>
 
               {/* BOOK YOUR APPOINTMENT SEARCH WIDGET */}
-              <div style={{ width: '100%', maxWidth: '1050px', background: 'rgba(255, 255, 255, 0.95)', borderRadius: '20px', padding: '25px 30px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', backdropFilter: 'blur(10px)' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', margin: '0 0 16px 0' }}>Book Your Appointment</h3>
+              <div style={{ width: '100%', maxWidth: '900px', background: 'rgba(255, 255, 255, 0.95)', borderRadius: '16px', padding: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.4)', backdropFilter: 'blur(10px)', textAlign: 'left' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#0f172a', margin: '0 0 14px 0' }}>Book Your Appointment</h3>
                 
-                <form onSubmit={handleHeroSearch} style={{ display: 'grid', gridTemplateColumns: '2fr auto 1.5fr 1.5fr auto', gap: '12px', alignItems: 'center' }}>
+                <form onSubmit={handleHeroSearch} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', alignItems: 'center' }}>
                   <div style={{ position: 'relative' }}>
                     <input 
                       type="text" 
-                      placeholder="Search for doctors, clinic, hospital" 
+                      placeholder="Search for doctors, clinic..." 
                       value={heroDoctorSearch} 
                       onChange={e=>setHeroDoctorSearch(e.target.value)}
-                      style={{ width: '100%', padding: '13px 16px 13px 38px', borderRadius: '10px', border: '1px solid #cbd5e1', fontSize: '13px', outline: 'none', boxSizing: 'border-box' }}
+                      style={{ width: '100%', padding: '10px 12px 10px 32px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', outline: 'none', boxSizing: 'border-box' }}
                     />
-                    <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#64748b', fontSize: '15px' }}>🔍</span>
+                    <span style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#64748b', fontSize: '13px' }}>🔍</span>
                   </div>
-
-                  <span style={{ fontSize: '12px', fontWeight: '800', color: '#64748b' }}>OR</span>
 
                   <select 
                     value={heroSpeciality} 
                     onChange={e=>setHeroSpeciality(e.target.value)}
-                    style={{ width: '100%', padding: '13px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', fontSize: '13px', color: '#334155', outline: 'none', background: '#fff', cursor: 'pointer' }}
+                    style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', color: '#334155', background: '#fff' }}
                   >
                     <option value="Select speciality">Select speciality</option>
                     {departmentNames.map((d, idx) => (
@@ -1123,7 +1097,7 @@ export default function App() {
                   <select 
                     value={heroHospital} 
                     onChange={e=>setHeroHospital(e.target.value)}
-                    style={{ width: '100%', padding: '13px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', fontSize: '13px', color: '#334155', outline: 'none', background: '#fff', cursor: 'pointer' }}
+                    style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '12px', color: '#334155', background: '#fff' }}
                   >
                     <option value="Select clinic/hospital">Select clinic/hospital</option>
                     {sriLankaLocationsList.map((loc) => (
@@ -1131,23 +1105,23 @@ export default function App() {
                     ))}
                   </select>
 
-                  <button type="submit" style={{ background: '#2563eb', color: '#ffffff', border: 'none', padding: '13px 28px', borderRadius: '10px', fontWeight: '900', fontSize: '13px', cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e=>e.currentTarget.style.background='#1d4ed8'} onMouseOut={e=>e.currentTarget.style.background='#2563eb'}>
+                  <button type="submit" style={{ background: '#2563eb', color: '#ffffff', border: 'none', padding: '11px 20px', borderRadius: '8px', fontWeight: '900', fontSize: '13px', cursor: 'pointer' }}>
                     Search
                   </button>
                 </form>
 
-                <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <div onClick={() => setActiveTab('dashboard')} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-                    <div style={{ background: '#dbeafe', padding: '8px', borderRadius: '8px', color: '#2563eb', fontSize: '16px' }}>📅</div>
+                    <div style={{ background: '#dbeafe', padding: '6px', borderRadius: '6px', color: '#2563eb', fontSize: '14px' }}>📅</div>
                     <div>
-                      <h4 style={{ margin: 0, fontSize: '13px', fontWeight: '900', color: '#0f172a' }}>Manage appointments ➔</h4>
-                      <p style={{ margin: 0, fontSize: '11px', color: '#64748b' }}>For you and your family members</p>
+                      <h4 style={{ margin: 0, fontSize: '12px', fontWeight: '900', color: '#0f172a' }}>Manage appointments ➔</h4>
+                      <p style={{ margin: 0, fontSize: '10px', color: '#64748b' }}>For you and your family members</p>
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '10px' }}>
-                    <button onClick={() => setActiveTab('queue')} style={{ background: '#f1f5f9', color: '#0f172a', border: '1px solid #cbd5e1', padding: '8px 16px', borderRadius: '8px', fontWeight: '800', fontSize: '12px', cursor: 'pointer' }}>Live Queue Tracker ⏱️</button>
-                    <button onClick={() => setActiveTab('reports')} style={{ background: '#f1f5f9', color: '#0f172a', border: '1px solid #cbd5e1', padding: '8px 16px', borderRadius: '8px', fontWeight: '800', fontSize: '12px', cursor: 'pointer' }}>Lab Reports Download 📄</button>
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    <button onClick={() => setActiveTab('queue')} style={{ flex: 1, background: '#f1f5f9', color: '#0f172a', border: '1px solid #cbd5e1', padding: '8px', borderRadius: '6px', fontWeight: '800', fontSize: '11px', cursor: 'pointer' }}>Live Queue Tracker ⏱️</button>
+                    <button onClick={() => setActiveTab('reports')} style={{ flex: 1, background: '#f1f5f9', color: '#0f172a', border: '1px solid #cbd5e1', padding: '8px', borderRadius: '6px', fontWeight: '800', fontSize: '11px', cursor: 'pointer' }}>Lab Reports 📄</button>
                   </div>
                 </div>
 
@@ -1155,22 +1129,22 @@ export default function App() {
             </div>
 
             {/* HOSPITALS & MEDICAL CENTRES LOCATIONS GRID */}
-            <div style={{ background: '#f8fafc', padding: '60px 24px' }}>
+            <div style={{ background: '#f8fafc', padding: '40px 16px' }}>
               <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-                <h2 style={{ textAlign: 'center', fontSize: '28px', fontWeight: '900', color: '#2563eb', marginBottom: '35px', fontFamily: 'serif' }}>
+                <h2 style={{ textAlign: 'center', fontSize: '22px', fontWeight: '900', color: '#2563eb', marginBottom: '24px', fontFamily: 'serif' }}>
                   Medcare Hospitals & Medical Centres
                 </h2>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
                   {sriLankaLocationsList.map((loc) => (
-                    <div key={loc.id} className="glass-card card-hover" style={{ borderRadius: '18px', overflow: 'hidden', background: '#fff', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      <div style={{ height: '180px', overflow: 'hidden' }}>
+                    <div key={loc.id} className="glass-card card-hover" style={{ borderRadius: '14px', overflow: 'hidden', background: '#fff', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div style={{ height: '150px', overflow: 'hidden' }}>
                         <img src={loc.img} alt={loc.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       </div>
-                      <div style={{ padding: '20px', textAlign: 'center' }}>
-                        <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#0f172a', margin: '0 0 6px 0' }}>{loc.name}</h3>
-                        <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '16px' }}>📍 {loc.address}</p>
-                        <button onClick={() => { setSelectedLocationObj(loc); setActiveTab('location_detail'); }} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '8px 20px', borderRadius: '20px', fontWeight: '800', fontSize: '11px', cursor: 'pointer' }}>
+                      <div style={{ padding: '16px', textAlign: 'center' }}>
+                        <h3 style={{ fontSize: '14px', fontWeight: '900', color: '#0f172a', margin: '0 0 4px 0' }}>{loc.name}</h3>
+                        <p style={{ fontSize: '11px', color: '#64748b', marginBottom: '12px' }}>📍 {loc.address}</p>
+                        <button onClick={() => { setSelectedLocationObj(loc); setActiveTab('location_detail'); }} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '8px 16px', borderRadius: '16px', fontWeight: '800', fontSize: '10px', cursor: 'pointer' }}>
                           LEARN MORE ➔
                         </button>
                       </div>
@@ -1181,14 +1155,14 @@ export default function App() {
             </div>
 
             {/* PHILOSOPHY & ABOUT SECTION */}
-            <div style={{ background: '#ffffff', padding: '70px 24px', textAlign: 'center' }}>
-              <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                <span style={{ fontSize: '12px', fontWeight: '800', color: '#94a3b8', letterSpacing: '2px', textTransform: 'uppercase' }}>OUR PHILOSOPHY</span>
-                <h2 style={{ fontSize: '38px', fontWeight: '900', color: '#2563eb', margin: '10px 0 25px 0', fontFamily: 'serif' }}>
+            <div style={{ background: '#ffffff', padding: '40px 16px', textAlign: 'center' }}>
+              <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                <span style={{ fontSize: '11px', fontWeight: '800', color: '#94a3b8', letterSpacing: '1.5px', textTransform: 'uppercase' }}>OUR PHILOSOPHY</span>
+                <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#2563eb', margin: '8px 0 16px 0', fontFamily: 'serif' }}>
                   We'll treat you well
                 </h2>
-                <p style={{ fontSize: '15px', color: '#475569', lineHeight: '1.8' }}>
-                  MedCare brings the network of multi-speciality hospitals, medical centres and hundreds of specialized doctors with one care passion in mind - your and your family's well-being. We maintain the highest possible standards in all aspects of healthcare.
+                <p style={{ fontSize: '13px', color: '#475569', lineHeight: '1.6' }}>
+                  MedCare brings the network of multi-speciality hospitals, medical centres and hundreds of specialized doctors with one care passion in mind - your and your family's well-being.
                 </p>
               </div>
             </div>
@@ -1197,42 +1171,42 @@ export default function App() {
         )}
 
         {/* REST OF PURE FUNCTIONAL TABS CONTAINER */}
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '35px 24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px 16px' }}>
 
-          {/* INDIVIDUAL LOCATION DETAIL PAGE (BLUE THEME + FULL DATA) */}
+          {/* INDIVIDUAL LOCATION DETAIL PAGE */}
           {activeTab === 'location_detail' && selectedLocationObj && (
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', boxShadow: '0 25px 50px rgba(0,0,0,0.2)' }}>
-              <button onClick={() => setActiveTab('locations')} style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', padding: '8px 16px', borderRadius: '8px', fontWeight: '800', cursor: 'pointer', marginBottom: '20px' }}>← Back to All Locations</button>
+            <div style={{ background: '#ffffff', borderRadius: '16px', padding: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <button onClick={() => setActiveTab('locations')} style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', padding: '6px 12px', borderRadius: '6px', fontWeight: '800', cursor: 'pointer', marginBottom: '16px', fontSize: '12px' }}>← Back to All Locations</button>
               
-              <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '30px', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', alignItems: 'center' }}>
                 <div>
-                  <span style={{ background: '#dbeafe', color: '#2563eb', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>📍 BRANCH OVERVIEW</span>
-                  <h1 style={{ fontSize: '32px', fontWeight: '900', color: '#0f172a', margin: '10px 0 12px 0', fontFamily: 'serif' }}>{selectedLocationObj.name}</h1>
-                  <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '16px' }}>{selectedLocationObj.address}</p>
-                  <p style={{ fontSize: '15px', color: '#334155', lineHeight: '1.6', marginBottom: '25px' }}>{selectedLocationObj.desc}</p>
+                  <span style={{ background: '#dbeafe', color: '#2563eb', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>📍 BRANCH OVERVIEW</span>
+                  <h1 style={{ fontSize: '22px', fontWeight: '900', color: '#0f172a', margin: '8px 0', fontFamily: 'serif' }}>{selectedLocationObj.name}</h1>
+                  <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '12px' }}>{selectedLocationObj.address}</p>
+                  <p style={{ fontSize: '13px', color: '#334155', lineHeight: '1.5', marginBottom: '16px' }}>{selectedLocationObj.desc}</p>
                   
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', background: '#f8fafc', padding: '16px', borderRadius: '14px', textAlign: 'center', marginBottom: '25px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', background: '#f8fafc', padding: '12px', borderRadius: '10px', textAlign: 'center', marginBottom: '16px', border: '1px solid #e2e8f0' }}>
                     <div>
-                      <div style={{ fontSize: '11px', color: '#64748b', fontWeight: '800' }}>Beds</div>
-                      <div style={{ fontSize: '16px', fontWeight: '900', color: '#2563eb' }}>{selectedLocationObj.beds}</div>
+                      <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>Beds</div>
+                      <div style={{ fontSize: '14px', fontWeight: '900', color: '#2563eb' }}>{selectedLocationObj.beds}</div>
                     </div>
                     <div>
-                      <div style={{ fontSize: '11px', color: '#64748b', fontWeight: '800' }}>Doctors</div>
-                      <div style={{ fontSize: '16px', fontWeight: '900', color: '#2563eb' }}>{selectedLocationObj.doctors}</div>
+                      <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>Doctors</div>
+                      <div style={{ fontSize: '14px', fontWeight: '900', color: '#2563eb' }}>{selectedLocationObj.doctors}</div>
                     </div>
                     <div>
-                      <div style={{ fontSize: '11px', color: '#64748b', fontWeight: '800' }}>Specialities</div>
-                      <div style={{ fontSize: '16px', fontWeight: '900', color: '#2563eb' }}>{selectedLocationObj.specialities}</div>
+                      <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>Specialities</div>
+                      <div style={{ fontSize: '14px', fontWeight: '900', color: '#2563eb' }}>{selectedLocationObj.specialities}</div>
                     </div>
                   </div>
 
-                  <button onClick={() => { setDoctorName(`Appointment at ${selectedLocationObj.name}`); setActiveTab('book'); }} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px 30px', borderRadius: '12px', fontSize: '14px', fontWeight: '900', cursor: 'pointer' }}>
+                  <button onClick={() => { setDoctorName(`Appointment at ${selectedLocationObj.name}`); setActiveTab('book'); }} style={{ width: '100%', background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '10px', fontSize: '13px', fontWeight: '900', cursor: 'pointer' }}>
                     Book Appointment Here 🩺
                   </button>
                 </div>
 
                 <div>
-                  <img src={selectedLocationObj.img} alt={selectedLocationObj.name} style={{ width: '100%', height: '350px', objectFit: 'cover', borderRadius: '20px', boxShadow: '0 15px 35px rgba(0,0,0,0.15)' }} />
+                  <img src={selectedLocationObj.img} alt={selectedLocationObj.name} style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '14px' }} />
                 </div>
               </div>
             </div>
@@ -1240,33 +1214,33 @@ export default function App() {
 
           {/* MY PATIENT DASHBOARD */}
           {activeTab === 'dashboard' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px' }}>
-              <span style={{ background: '#2563eb', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>👤 PATIENT PORTAL</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 20px 0' }}>Welcome, {email || 'Guest Patient'}</h2>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px' }}>
+              <span style={{ background: '#2563eb', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>👤 PATIENT PORTAL</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 16px 0' }}>Welcome, {email || 'Guest Patient'}</h2>
               
-              <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#2563eb', marginBottom: '12px' }}>My Active Appointments ({userAppointments.length})</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: '800', color: '#2563eb', marginBottom: '10px' }}>My Active Appointments ({userAppointments.length})</h3>
               <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                   <thead>
                     <tr style={{ background: '#f1f5f9', borderBottom: '2px solid #cbd5e1' }}>
-                      <th style={{ padding: '10px' }}>Doctor / Service</th>
-                      <th style={{ padding: '10px' }}>Department</th>
-                      <th style={{ padding: '10px' }}>Date</th>
-                      <th style={{ padding: '10px' }}>Status</th>
+                      <th style={{ padding: '8px' }}>Doctor / Service</th>
+                      <th style={{ padding: '8px' }}>Department</th>
+                      <th style={{ padding: '8px' }}>Date</th>
+                      <th style={{ padding: '8px' }}>Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {userAppointments.length > 0 ? (
                       userAppointments.map((app, i)=>(
                         <tr key={i} style={{ borderBottom: '1px solid #e2e8f0' }}>
-                          <td style={{ padding: '10px', fontWeight: '800' }}>{app.doctor_name}</td>
-                          <td style={{ padding: '10px' }}>{app.department}</td>
-                          <td style={{ padding: '10px' }}>{app.appointment_date}</td>
-                          <td style={{ padding: '10px', color: '#16a34a', fontWeight: '900' }}>● Confirmed</td>
+                          <td style={{ padding: '8px', fontWeight: '800' }}>{app.doctor_name}</td>
+                          <td style={{ padding: '8px' }}>{app.department}</td>
+                          <td style={{ padding: '8px' }}>{app.appointment_date}</td>
+                          <td style={{ padding: '8px', color: '#16a34a', fontWeight: '900' }}>● Confirmed</td>
                         </tr>
                       ))
                     ) : (
-                      <tr><td colSpan="4" style={{ padding: '15px', color: '#64748b' }}>No active bookings found. Please login or book an appointment.</td></tr>
+                      <tr><td colSpan="4" style={{ padding: '12px', color: '#64748b' }}>No active bookings found. Please login or book an appointment.</td></tr>
                     )}
                   </tbody>
                 </table>
@@ -1276,47 +1250,41 @@ export default function App() {
 
           {/* LIVE QUEUE TRACKER TAB */}
           {activeTab === 'queue' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '750px', margin: '0 auto' }}>
-              <span style={{ background: '#2563eb', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>⏱️ LIVE TOKEN ENGINE</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>Real-Time Patient Queue & Wait Time Tracker</h2>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>Track live OPD token progress from home without standing in physical hospital queues.</p>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+              <span style={{ background: '#2563eb', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>⏱️ LIVE TOKEN ENGINE</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 4px 0' }}>Real-Time Patient Queue Tracker</h2>
+              <p style={{ color: '#64748b', fontSize: '12px', marginBottom: '16px' }}>Track live OPD token progress from home.</p>
 
-              <div style={{ display: 'flex', gap: '10px', marginBottom: '25px' }}>
-                <input type="text" placeholder="Enter Patient ID (e.g. MED-14152) or Token No" value={trackTokenId} onChange={e=>setTrackTokenId(e.target.value)} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', fontSize: '15px' }} />
-                <button onClick={handleTrackQueue} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '0 24px', borderRadius: '12px', fontWeight: '900', cursor: 'pointer' }}>Track Token 🔍</button>
+              <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
+                <input type="text" placeholder="Enter Patient ID or Token No" value={trackTokenId} onChange={e=>setTrackTokenId(e.target.value)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+                <button onClick={handleTrackQueue} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '0 16px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', fontSize: '13px' }}>Track 🔍</button>
               </div>
 
               {queueInfo && (
-                <div style={{ background: '#f8fafc', padding: '25px', borderRadius: '20px', border: '2px solid #2563eb' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', borderBottom: '1px solid #cbd5e1', paddingBottom: '12px' }}>
+                <div style={{ background: '#f8fafc', padding: '16px', borderRadius: '14px', border: '2px solid #2563eb' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', borderBottom: '1px solid #cbd5e1', paddingBottom: '8px' }}>
                     <div>
-                      <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '800' }}>CLINIC / ROOM</span>
-                      <h4 style={{ margin: 0, fontSize: '16px', fontWeight: '900', color: '#0f172a' }}>{queueInfo.doctor}</h4>
-                      <span style={{ fontSize: '12px', color: '#2563eb', fontWeight: '800' }}>{queueInfo.room}</span>
+                      <span style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>CLINIC</span>
+                      <h4 style={{ margin: 0, fontSize: '14px', fontWeight: '900', color: '#0f172a' }}>{queueInfo.doctor}</h4>
                     </div>
-                    <span className="pulse-badge" style={{ background: '#ef4444', color: '#fff', padding: '6px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: '900' }}>● LIVE NOW</span>
+                    <span className="pulse-badge" style={{ background: '#ef4444', color: '#fff', padding: '4px 8px', borderRadius: '12px', fontSize: '10px', fontWeight: '900' }}>● LIVE</span>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px', textAlign: 'center' }}>
-                    <div style={{ background: '#e0f2fe', padding: '15px', borderRadius: '14px' }}>
-                      <div style={{ fontSize: '11px', color: '#0369a1', fontWeight: '800' }}>CURRENT SERVING TOKEN</div>
-                      <div style={{ fontSize: '28px', fontWeight: '900', color: '#0284c7', margin: '4px 0' }}>{queueInfo.currentToken}</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '8px', textAlign: 'center' }}>
+                    <div style={{ background: '#e0f2fe', padding: '10px', borderRadius: '10px' }}>
+                      <div style={{ fontSize: '9px', color: '#0369a1', fontWeight: '800' }}>CURRENT</div>
+                      <div style={{ fontSize: '20px', fontWeight: '900', color: '#0284c7' }}>{queueInfo.currentToken}</div>
                     </div>
 
-                    <div style={{ background: '#dcfce7', padding: '15px', borderRadius: '14px' }}>
-                      <div style={{ fontSize: '11px', color: '#15803d', fontWeight: '800' }}>YOUR TOKEN NO</div>
-                      <div style={{ fontSize: '28px', fontWeight: '900', color: '#16a34a', margin: '4px 0' }}>{queueInfo.userToken}</div>
+                    <div style={{ background: '#dcfce7', padding: '10px', borderRadius: '10px' }}>
+                      <div style={{ fontSize: '9px', color: '#15803d', fontWeight: '800' }}>YOUR TOKEN</div>
+                      <div style={{ fontSize: '20px', fontWeight: '900', color: '#16a34a' }}>{queueInfo.userToken}</div>
                     </div>
 
-                    <div style={{ background: '#fef3c7', padding: '15px', borderRadius: '14px' }}>
-                      <div style={{ fontSize: '11px', color: '#b45309', fontWeight: '800' }}>ESTIMATED WAIT TIME</div>
-                      <div style={{ fontSize: '28px', fontWeight: '900', color: '#d97706', margin: '4px 0' }}>~{queueInfo.estimatedMins} Mins</div>
+                    <div style={{ background: '#fef3c7', padding: '10px', borderRadius: '10px' }}>
+                      <div style={{ fontSize: '9px', color: '#b45309', fontWeight: '800' }}>WAIT TIME</div>
+                      <div style={{ fontSize: '20px', fontWeight: '900', color: '#d97706' }}>~{queueInfo.estimatedMins}m</div>
                     </div>
-                  </div>
-
-                  <div style={{ marginTop: '20px', background: '#fff', padding: '12px 18px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #e2e8f0' }}>
-                    <span style={{ fontSize: '13px', fontWeight: '800', color: '#334155' }}>👥 Patients Waiting Ahead of You:</span>
-                    <span style={{ fontSize: '16px', fontWeight: '900', color: '#dc2626' }}>{queueInfo.patientsAhead} Patients</span>
                   </div>
                 </div>
               )}
@@ -1326,29 +1294,24 @@ export default function App() {
           {/* HOMECARE SERVICES GRID */}
           {activeTab === 'homecare' && (
             <div>
-              <div style={{ textTransform: 'uppercase', color: '#94a3b8', fontSize: '12px', fontWeight: '800', marginBottom: '8px' }}>
-                🏠 / <span style={{ color: '#60a5fa' }}>HOME SERVICES</span>
-              </div>
-              <h2 style={{ fontSize: '30px', fontWeight: '900', color: '#ffffff', marginBottom: '25px' }}>Comprehensive HomeCare Services</h2>
+              <h2 style={{ fontSize: '22px', fontWeight: '900', color: '#ffffff', marginBottom: '20px' }}>HomeCare Services</h2>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '22px', marginBottom: '40px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '16px', marginBottom: '30px' }}>
                 {homeCareServicesList.map((srv) => (
-                  <div key={srv.id} className="glass-card card-hover" style={{ borderRadius: '20px', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: '#ffffff' }}>
+                  <div key={srv.id} className="glass-card card-hover" style={{ borderRadius: '14px', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', background: '#ffffff' }}>
                     <div>
-                      <div style={{ height: '180px', overflow: 'hidden' }}>
+                      <div style={{ height: '140px', overflow: 'hidden' }}>
                         <img src={srv.img} alt={srv.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       </div>
-                      <div style={{ padding: '20px' }}>
-                        <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', margin: '0 0 8px 0' }}>{srv.title}</h3>
-                        <p style={{ fontSize: '13px', color: '#64748b', lineHeight: '1.5', margin: 0 }}>{srv.desc}</p>
+                      <div style={{ padding: '14px' }}>
+                        <h3 style={{ fontSize: '15px', fontWeight: '900', color: '#0f172a', margin: '0 0 6px 0' }}>{srv.title}</h3>
+                        <p style={{ fontSize: '11px', color: '#64748b', lineHeight: '1.4', margin: 0 }}>{srv.desc}</p>
                       </div>
                     </div>
-                    <div style={{ padding: '0 20px 20px 20px', textAlign: 'center' }}>
+                    <div style={{ padding: '0 14px 14px 14px', textAlign: 'center' }}>
                       <button 
-                        onClick={() => { setHomeCareService(srv.title); window.scrollTo({ top: 700, behavior: 'smooth' }); }} 
-                        style={{ background: 'none', border: '2px solid #2563eb', color: '#2563eb', padding: '10px 22px', borderRadius: '25px', fontWeight: '900', fontSize: '12px', cursor: 'pointer', transition: 'all 0.2s' }}
-                        onMouseOver={e => { e.currentTarget.style.background = '#2563eb'; e.currentTarget.style.color = '#fff'; }}
-                        onMouseOut={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#2563eb'; }}
+                        onClick={() => { setHomeCareService(srv.title); window.scrollTo({ top: 600, behavior: 'smooth' }); }} 
+                        style={{ width: '100%', background: '#2563eb', color: '#fff', border: 'none', padding: '8px', borderRadius: '8px', fontWeight: '900', fontSize: '11px', cursor: 'pointer' }}
                       >
                         BOOK NOW ➔
                       </button>
@@ -1357,38 +1320,37 @@ export default function App() {
                 ))}
               </div>
 
-              <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '650px', margin: '0 auto' }}>
-                <span style={{ background: '#2563eb', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>🏠 INSTANT HOMECARE BOOKING</span>
-                <h3 style={{ fontSize: '24px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>Selected Service: {homeCareService}</h3>
-                <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>Professional Sri Lankan healthcare brought directly to your home doorstep.</p>
+              <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '550px', margin: '0 auto' }}>
+                <span style={{ background: '#2563eb', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>🏠 HOMECARE BOOKING</span>
+                <h3 style={{ fontSize: '18px', fontWeight: '900', color: '#0f172a', margin: '8px 0 14px 0' }}>Selected: {homeCareService}</h3>
                 
-                <form onSubmit={handleHomeCareBooking} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <form onSubmit={handleHomeCareBooking} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Patient Full Name</label>
-                    <input type="text" placeholder="Enter patient name" value={homeCareName} onChange={e=>setHomeCareName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Full Name</label>
+                    <input type="text" placeholder="Enter patient name" value={homeCareName} onChange={e=>setHomeCareName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                     <div>
-                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Mobile Number</label>
-                      <input type="text" placeholder="+94..." value={homeCareMobile} onChange={e=>setHomeCareMobile(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Mobile</label>
+                      <input type="text" placeholder="+94..." value={homeCareMobile} onChange={e=>setHomeCareMobile(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                     </div>
                     <div>
-                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Gmail Address</label>
-                      <input type="email" placeholder="patient@gmail.com" value={homeCareEmail} onChange={e=>setHomeCareEmail(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Email</label>
+                      <input type="email" placeholder="patient@gmail.com" value={homeCareEmail} onChange={e=>setHomeCareEmail(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                     </div>
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Required HomeCare Service</label>
-                    <select value={homeCareService} onChange={e=>setHomeCareService(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }}>
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Service</label>
+                    <select value={homeCareService} onChange={e=>setHomeCareService(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }}>
                       {homeCareServicesList.map(s => (<option key={s.id} value={s.title}>{s.title}</option>))}
                     </select>
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Home Address in Sri Lanka</label>
-                    <textarea placeholder="Enter street, city, district..." value={homeAddress} onChange={e=>setHomeAddress(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', height: '80px', background: '#fff' }}></textarea>
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Address</label>
+                    <textarea placeholder="Enter street, city..." value={homeAddress} onChange={e=>setHomeAddress(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', height: '60px', fontSize: '13px' }}></textarea>
                   </div>
-                  <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer' }}>
-                    {loading ? 'Saving...' : 'Book HomeCare Service & Send Email 🏠'}
+                  <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', fontSize: '13px' }}>
+                    {loading ? 'Saving...' : 'Book HomeCare Service 🏠'}
                   </button>
                 </form>
               </div>
@@ -1397,32 +1359,18 @@ export default function App() {
 
           {/* CHRONIC CARE PROGRAM TAB */}
           {activeTab === 'chronic' && (
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '40px', boxShadow: '0 25px 50px rgba(0,0,0,0.3)' }}>
-              <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 35px auto' }}>
-                <span style={{ color: '#2563eb', fontWeight: '900', letterSpacing: '1px', fontSize: '13px' }}>🩺 LONG TERM HEALTHCARE</span>
-                <h1 style={{ fontSize: '36px', fontWeight: '900', color: '#0f172a', margin: '10px 0 15px 0' }}>Chronic Care Program</h1>
-                <p style={{ color: '#64748b', fontSize: '15px', lineHeight: '1.6' }}>
-                  Our Chronic Care Program is designed to provide a team of dedicated healthcare professionals brings together Doctors, Nurses, Dietitians, Fitness Coaches to work on a personalized plan for your wellbeing.
+            <div style={{ background: '#ffffff', borderRadius: '16px', padding: '24px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 24px auto' }}>
+                <span style={{ color: '#2563eb', fontWeight: '900', fontSize: '11px' }}>🩺 LONG TERM HEALTHCARE</span>
+                <h1 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '6px 0 10px 0' }}>Chronic Care Program</h1>
+                <p style={{ color: '#64748b', fontSize: '13px', lineHeight: '1.5' }}>
+                  Our Chronic Care Program provides a team of dedicated healthcare professionals for long-term health management.
                 </p>
-                <div style={{ background: '#2563eb', color: '#fff', width: '140px', height: '140px', borderRadius: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '25px auto 0 auto', fontWeight: '900', fontSize: '16px', boxShadow: '0 10px 25px rgba(37,99,235,0.4)' }}>
-                  <span>1 YEAR</span>
-                  <span style={{ fontSize: '11px', fontWeight: '700' }}>LONG PROGRAM</span>
-                </div>
-              </div>
-
-              <div style={{ background: '#f8fafc', padding: '30px', borderRadius: '20px', border: '1px solid #e2e8f0', marginBottom: '35px' }}>
-                <h3 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', textAlign: 'center', marginBottom: '20px' }}>Program Roadmap</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', textAlign: 'center' }}>
-                  <div style={{ background: '#2563eb', color: '#fff', padding: '16px', borderRadius: '12px', fontWeight: '800' }}>1. Screening & Vitals</div>
-                  <div style={{ background: '#1d4ed8', color: '#fff', padding: '16px', borderRadius: '12px', fontWeight: '800' }}>2. Consult Specialist Physician</div>
-                  <div style={{ background: '#7c3aed', color: '#fff', padding: '16px', borderRadius: '12px', fontWeight: '800' }}>3. Dietitian Consultation</div>
-                  <div style={{ background: '#16a34a', color: '#fff', padding: '16px', borderRadius: '12px', fontWeight: '800' }}>4. 24/7 Support & Bloodwork</div>
-                </div>
               </div>
 
               <div style={{ textAlign: 'center' }}>
-                <button onClick={() => { setSelectedDept('Internal Medicine'); setActiveTab('book'); }} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px 35px', borderRadius: '30px', fontWeight: '900', fontSize: '15px', cursor: 'pointer', boxShadow: '0 6px 20px rgba(37,99,235,0.3)' }}>
-                  Enroll In Chronic Care Program ➔
+                <button onClick={() => { setSelectedDept('Internal Medicine'); setActiveTab('book'); }} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '12px 28px', borderRadius: '20px', fontWeight: '900', fontSize: '13px', cursor: 'pointer' }}>
+                  Enroll In Program ➔
                 </button>
               </div>
             </div>
@@ -1430,113 +1378,81 @@ export default function App() {
 
           {/* TELEMEDCARE VIDEO CONSULTATION */}
           {activeTab === 'telemedcare' && (
-            <div style={{ background: '#ffffff', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.3)' }}>
-              <div style={{ background: '#1e3a8a', padding: '35px 50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '25px', flexWrap: 'wrap' }}>
-                <div>
-                  <span style={{ color: '#93c5fd', fontSize: '13px', fontWeight: '800', letterSpacing: '1px' }}>📹 teleMEDCARE</span>
-                  <h1 style={{ fontSize: '36px', fontWeight: '900', color: '#ffffff', margin: '8px 0', fontFamily: 'serif' }}>Live Telemedicine Consultations</h1>
-                  <p style={{ color: '#e2e8f0', fontSize: '14px', maxWidth: '480px' }}>Consult top Sri Lankan medical specialists live via HD Video Call from anywhere.</p>
-                </div>
+            <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <div style={{ background: '#1e3a8a', padding: '24px' }}>
+                <span style={{ color: '#93c5fd', fontSize: '11px', fontWeight: '800' }}>📹 teleMEDCARE</span>
+                <h1 style={{ fontSize: '24px', fontWeight: '900', color: '#ffffff', margin: '6px 0', fontFamily: 'serif' }}>Live Telemedicine Consultations</h1>
               </div>
 
-              <div style={{ padding: '35px 40px', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '35px' }}>
-                <div style={{ borderRight: '1px solid #e2e8f0', paddingRight: '25px' }}>
-                  <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#0f172a', marginBottom: '16px' }}>teleMEDCARE SERVICES</h3>
-                  {['teleUrology ➔', 'telePost-Procedure Care ➔', 'teleWeight Management ➔', 'teleGeriatrics ➔', 'teleNutrition ➔', 'telePediatrics ➔', 'teleCardiology ➔'].map((item, idx) => (
-                    <div key={idx} style={{ padding: '12px', borderRadius: '10px', borderBottom: '1px solid #f1f5f9', color: '#2563eb', fontWeight: '800', fontSize: '13px', cursor: 'pointer' }} onMouseOver={e=>e.currentTarget.style.background='#eff6ff'} onMouseOut={e=>e.currentTarget.style.background='transparent'}>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-
-                <div>
-                  <h3 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginTop: 0 }}>Book Live Video Consultation</h3>
-                  <form onSubmit={handleTeleMedcareBooking} style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '16px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '5px', color: '#1e293b' }}>Full Name</label>
-                      <input type="text" placeholder="Enter patient name" value={telePatientName} onChange={e=>setTelePatientName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '5px', color: '#1e293b' }}>Mobile Number</label>
-                      <input type="text" placeholder="+94..." value={teleMobile} onChange={e=>setTeleMobile(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '5px', color: '#1e293b' }}>Gmail Address</label>
-                      <input type="email" placeholder="patient@gmail.com" value={teleEmail} onChange={e=>setTeleEmail(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }} />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontWeight: '800', marginBottom: '5px', color: '#1e293b' }}>Consultation Category</label>
-                      <select value={teleService} onChange={e=>setTeleService(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1' }}>
-                        <option value="Live Teleconsultation">Live Teleconsultation</option>
-                        <option value="teleUrology">teleUrology</option>
-                        <option value="telePost-Procedure Care">telePost-Procedure Care</option>
-                        <option value="teleWeight Management">teleWeight Management</option>
-                        <option value="teleNutrition">teleNutrition</option>
-                      </select>
-                    </div>
-                    <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px', borderRadius: '10px', fontWeight: '900', fontSize: '14px', cursor: 'pointer', marginTop: '8px' }}>
-                      {loading ? 'Saving...' : 'Agree and Proceed to Video Consultation & Send Email 📹'}
-                    </button>
-                  </form>
-                </div>
+              <div style={{ padding: '20px' }}>
+                <form onSubmit={handleTeleMedcareBooking} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div>
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Full Name</label>
+                    <input type="text" placeholder="Enter patient name" value={telePatientName} onChange={e=>setTelePatientName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Mobile</label>
+                    <input type="text" placeholder="+94..." value={teleMobile} onChange={e=>setTeleMobile(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Email</label>
+                    <input type="email" placeholder="patient@gmail.com" value={teleEmail} onChange={e=>setTeleEmail(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+                  </div>
+                  <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', fontSize: '13px', cursor: 'pointer' }}>
+                    {loading ? 'Saving...' : 'Book Video Consultation 📹'}
+                  </button>
+                </form>
               </div>
             </div>
           )}
 
           {/* PHARMACY OCR TAB */}
           {activeTab === 'pharmacy' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '750px', margin: '0 auto' }}>
-              <span style={{ background: '#16a34a', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>💊 OCR PHARMACY DELIVERY</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>Prescription OCR Scan & Home Medicine Delivery</h2>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>Upload written doctor prescription to automatically extract medicines & order delivery across Sri Lanka.</p>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+              <span style={{ background: '#16a34a', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>💊 OCR PHARMACY DELIVERY</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 4px 0' }}>Prescription OCR Scan & Delivery</h2>
 
-              <form onSubmit={handleScanPrescription} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                  <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px' }}>Patient Full Name</label>
-                    <input type="text" placeholder="Enter name" value={rxPatientName} onChange={e=>setRxPatientName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1' }} />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px' }}>Delivery Address in Sri Lanka</label>
-                    <input type="text" placeholder="Colombo, Kandy, Galle..." value={rxAddress} onChange={e=>setRxAddress(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1' }} />
-                  </div>
+              <form onSubmit={handleScanPrescription} style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '14px' }}>
+                <div>
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Patient Full Name</label>
+                  <input type="text" placeholder="Enter name" value={rxPatientName} onChange={e=>setRxPatientName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Delivery Address</label>
+                  <input type="text" placeholder="Colombo, Kandy..." value={rxAddress} onChange={e=>setRxAddress(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px' }}>Upload Doctor Prescription (Image / PDF)</label>
-                  <input type="file" onChange={e=>setRxFile(e.target.files[0])} style={{ width: '100%', padding: '10px', borderRadius: '12px', border: '2px dashed #2563eb', background: '#f0f9ff' }} />
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Upload Prescription</label>
+                  <input type="file" onChange={e=>setRxFile(e.target.files[0])} style={{ width: '100%', padding: '8px', borderRadius: '8px', border: '2px dashed #2563eb', background: '#f0f9ff', fontSize: '12px' }} />
                 </div>
 
-                <button type="submit" disabled={isScanning} style={{ background: '#16a34a', color: '#fff', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: '900', fontSize: '15px', cursor: 'pointer' }}>
-                  {isScanning ? '🔍 AI OCR Scanning Prescription...' : 'Scan Prescription & Extract Medicines 🚀'}
+                <button type="submit" disabled={isScanning} style={{ background: '#16a34a', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', fontSize: '13px', cursor: 'pointer' }}>
+                  {isScanning ? 'Scanning...' : 'Scan & Extract Medicines 🚀'}
                 </button>
               </form>
 
               {extractedMedicines.length > 0 && (
-                <div style={{ marginTop: '25px', background: '#f8fafc', padding: '22px', borderRadius: '18px', border: '1px solid #cbd5e1' }}>
-                  <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#0f172a', margin: '0 0 14px 0' }}>✅ OCR Extracted Medicines List</h3>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13px' }}>
+                <div style={{ marginTop: '20px', background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #cbd5e1' }}>
+                  <h3 style={{ fontSize: '14px', fontWeight: '900', color: '#0f172a', margin: '0 0 10px 0' }}>Extracted Medicines</h3>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '11px' }}>
                     <thead>
                       <tr style={{ background: '#e2e8f0' }}>
-                        <th style={{ padding: '8px' }}>Medicine</th>
-                        <th style={{ padding: '8px' }}>Qty</th>
-                        <th style={{ padding: '8px' }}>Dosage</th>
-                        <th style={{ padding: '8px' }}>Price</th>
+                        <th style={{ padding: '6px' }}>Medicine</th>
+                        <th style={{ padding: '6px' }}>Price</th>
                       </tr>
                     </thead>
                     <tbody>
                       {extractedMedicines.map((med, i)=>(
                         <tr key={i} style={{ borderBottom: '1px solid #cbd5e1' }}>
-                          <td style={{ padding: '8px', fontWeight: '800' }}>{med.name}</td>
-                          <td style={{ padding: '8px' }}>{med.qty}</td>
-                          <td style={{ padding: '8px' }}>{med.dosage}</td>
-                          <td style={{ padding: '8px', color: '#16a34a', fontWeight: '900' }}>{med.price}</td>
+                          <td style={{ padding: '6px', fontWeight: '800' }}>{med.name}</td>
+                          <td style={{ padding: '6px', color: '#16a34a', fontWeight: '900' }}>{med.price}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
-                  <button onClick={() => { if(checkAuthProtection()){ setShowPaymentModal(true); setPaymentAmount('2300'); setPaymentPurpose('Pharmacy Medicine Delivery'); } }} style={{ width: '100%', background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '12px', fontWeight: '900', marginTop: '16px', cursor: 'pointer' }}>
-                    Order Pharmacy Delivery & Pay LKR 2,300 💳
+                  <button onClick={() => { if(checkAuthProtection()){ setShowPaymentModal(true); setPaymentAmount('2300'); setPaymentPurpose('Pharmacy Delivery'); } }} style={{ width: '100%', background: '#2563eb', color: '#fff', border: 'none', padding: '10px', borderRadius: '8px', fontWeight: '900', marginTop: '12px', cursor: 'pointer', fontSize: '12px' }}>
+                    Order & Pay LKR 2,300 💳
                   </button>
                 </div>
               )}
@@ -1545,37 +1461,35 @@ export default function App() {
 
           {/* 100+ DOCTORS DIRECTORY */}
           {activeTab === 'doctors' && (
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                <h2 style={{ fontSize: '30px', fontWeight: '900', color: '#f8fafc', margin: 0 }}>Doctors Directory</h2>
-                <span style={{ background: '#2563eb', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '12px', fontWeight: '800' }}>
-                  Showing {filteredDoctors.length} Specialists
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+                <h2 style={{ fontSize: '22px', fontWeight: '900', color: '#f8fafc', margin: 0 }}>Doctors Directory</h2>
+                <span style={{ background: '#2563eb', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>
+                  {filteredDoctors.length} Doctors
                 </span>
               </div>
 
               <input 
                 type="text" 
-                placeholder="Search by Doctor Name, Speciality, or Location..." 
+                placeholder="Search Doctor, Speciality..." 
                 value={searchQuery} 
                 onChange={(e) => setSearchQuery(e.target.value)} 
-                style={{ width: '100%', padding: '14px', borderRadius: '12px', border: '1px solid #cbd5e1', marginBottom: '25px', background: '#fff', boxSizing: 'border-box' }} 
+                style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', marginBottom: '20px', background: '#fff', fontSize: '13px' }} 
               />
               
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '20px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
                 {filteredDoctors.map((doc) => (
-                  <div key={doc.id} className="glass-card card-hover" style={{ borderRadius: '20px', padding: '24px', display: 'flex', gap: '20px', alignItems: 'center', background: '#ffffff' }}>
-                    <img src={doc.img} alt={doc.name} style={{ width: '130px', height: '140px', objectFit: 'cover', borderRadius: '14px' }} />
+                  <div key={doc.id} className="glass-card card-hover" style={{ borderRadius: '14px', padding: '16px', display: 'flex', gap: '14px', alignItems: 'center', background: '#ffffff' }}>
+                    <img src={doc.img} alt={doc.name} style={{ width: '90px', height: '100px', objectFit: 'cover', borderRadius: '10px' }} />
                     
                     <div style={{ flex: 1 }}>
-                      <h3 style={{ fontSize: '18px', fontWeight: '900', margin: '0 0 6px 0', color: '#0f172a' }}>{doc.name}</h3>
-                      <p style={{ color: '#64748b', fontSize: '12px', fontWeight: '700', margin: '0 0 4px 0' }}>{doc.qual}</p>
-                      <p style={{ color: '#2563eb', fontSize: '12px', fontWeight: '800', margin: '0 0 4px 0' }}>Speciality: {doc.spec}</p>
-                      <p style={{ color: '#475569', fontSize: '11px', fontWeight: '700', margin: '0 0 4px 0' }}>Nationality: {doc.nationality}</p>
-                      <p style={{ color: '#475569', fontSize: '11px', fontWeight: '700', margin: '0 0 12px 0' }}>Location: {doc.location}</p>
+                      <h3 style={{ fontSize: '15px', fontWeight: '900', margin: '0 0 4px 0', color: '#0f172a' }}>{doc.name}</h3>
+                      <p style={{ color: '#2563eb', fontSize: '11px', fontWeight: '800', margin: '0 0 4px 0' }}>{doc.spec}</p>
+                      <p style={{ color: '#475569', fontSize: '10px', margin: '0 0 8px 0' }}>{doc.location}</p>
                       
                       <button 
                         onClick={() => { setDoctorName(doc.name); setSelectedDept(doc.spec); setActiveTab('book'); }} 
-                        style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '10px 24px', borderRadius: '30px', fontWeight: '900', fontSize: '12px', cursor: 'pointer', boxShadow: '0 4px 12px rgba(37,99,235,0.3)' }}
+                        style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '6px 14px', borderRadius: '20px', fontWeight: '900', fontSize: '11px', cursor: 'pointer' }}
                       >
                         BOOK NOW →
                       </button>
@@ -1588,38 +1502,36 @@ export default function App() {
 
           {/* IPD INPATIENT ADMISSION */}
           {activeTab === 'ipd' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '720px', margin: '0 auto' }}>
-              <span style={{ background: '#7c3aed', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>🏥 IPD SERVICES</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>Inpatient Department (IPD) Admission</h2>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '20px' }}>Book comfortable hospital rooms, private wards, and 24/7 intensive nursing care across Sri Lanka branches.</p>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '550px', margin: '0 auto' }}>
+              <span style={{ background: '#7c3aed', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>🏥 IPD SERVICES</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 14px 0' }}>Inpatient Department (IPD)</h2>
               
-              <form onSubmit={handleIpdAdmission} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <form onSubmit={handleIpdAdmission} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Patient Full Name</label>
-                  <input type="text" placeholder="Enter patient name" value={ipdPatientName} onChange={e=>setIpdPatientName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Full Name</label>
+                  <input type="text" placeholder="Enter patient name" value={ipdPatientName} onChange={e=>setIpdPatientName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Mobile Number</label>
-                    <input type="text" placeholder="+94..." value={ipdMobile} onChange={e=>setIpdMobile(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Mobile</label>
+                    <input type="text" placeholder="+94..." value={ipdMobile} onChange={e=>setIpdMobile(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Gmail Address</label>
-                    <input type="email" placeholder="patient@gmail.com" value={ipdEmail} onChange={e=>setIpdEmail(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Email</label>
+                    <input type="email" placeholder="patient@gmail.com" value={ipdEmail} onChange={e=>setIpdEmail(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Select Room / Ward Type</label>
-                  <select value={ipdRoomType} onChange={e=>setIpdRoomType(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }}>
-                    <option value="Private Deluxe Room">Private Deluxe Room (AC, TV, Sofa)</option>
-                    <option value="Semi-Private Ward">Semi-Private Ward (2-Bed sharing)</option>
-                    <option value="General Ward">General Ward (Standard care)</option>
-                    <option value="ICU (Intensive Care Unit)">ICU (Intensive Care Unit - 24/7 Vitals)</option>
-                    <option value="VIP Presidential Suite">VIP Presidential Suite</option>
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Select Room</label>
+                  <select value={ipdRoomType} onChange={e=>setIpdRoomType(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }}>
+                    <option value="Private Deluxe Room">Private Deluxe Room</option>
+                    <option value="Semi-Private Ward">Semi-Private Ward</option>
+                    <option value="General Ward">General Ward</option>
+                    <option value="ICU">ICU (Intensive Care)</option>
                   </select>
                 </div>
-                <button type="submit" disabled={loading} style={{ background: '#7c3aed', color: '#fff', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: '900', fontSize: '15px', cursor: 'pointer', marginTop: '8px' }}>
-                  {loading ? 'Saving...' : 'Confirm IPD Admission & Send Email 🏥'}
+                <button type="submit" disabled={loading} style={{ background: '#7c3aed', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', fontSize: '13px', cursor: 'pointer' }}>
+                  {loading ? 'Saving...' : 'Confirm IPD Admission 🏥'}
                 </button>
               </form>
             </div>
@@ -1627,61 +1539,36 @@ export default function App() {
 
           {/* LOCATIONS SECTION */}
           {activeTab === 'locations' && (
-            <div style={{ background: '#ffffff', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.3)' }}>
-              <div style={{ background: '#1e3a8a', padding: '35px 50px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '25px', flexWrap: 'wrap' }}>
-                <div>
-                  <span style={{ color: '#93c5fd', fontSize: '13px', fontWeight: '800', letterSpacing: '1px' }}>📍 LOCATIONS</span>
-                  <h1 style={{ fontSize: '36px', fontWeight: '900', color: '#ffffff', margin: '8px 0 0 0', fontFamily: 'serif' }}>Locations</h1>
-                </div>
+            <div style={{ background: '#ffffff', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <div style={{ background: '#1e3a8a', padding: '24px' }}>
+                <span style={{ color: '#93c5fd', fontSize: '11px', fontWeight: '800' }}>📍 LOCATIONS</span>
+                <h1 style={{ fontSize: '24px', fontWeight: '900', color: '#ffffff', margin: '4px 0 0 0', fontFamily: 'serif' }}>Locations</h1>
               </div>
 
-              <div style={{ padding: '35px 40px' }}>
-                <h2 style={{ textAlign: 'center', fontSize: '24px', fontWeight: '900', color: '#2563eb', marginBottom: '22px' }}>Medcare Branches & Hospital Locations</h2>
-
-                <div style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '14px', marginBottom: '22px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px' }}>
-                  <div style={{ color: '#64748b', fontSize: '13px', fontWeight: '700' }}>
-                    🏠 / <span style={{ color: '#2563eb' }}>LOCATIONS</span>
-                  </div>
-
-                  <div style={{ minWidth: '300px' }}>
-                    <select value={selectedLocationFilter} onChange={e=>setSelectedLocationFilter(e.target.value)} style={{ width: '100%', padding: '10px 16px', borderRadius: '10px', border: '2px solid #2563eb', color: '#2563eb', fontWeight: '800', fontSize: '13px', outline: 'none', cursor: 'pointer', background: '#fff' }}>
-                      <option value="ALL">All Sri Lanka Locations (8 Branches)</option>
-                      {sriLankaLocationsList.map(loc => (
-                        <option key={loc.id} value={loc.id}>{loc.name}</option>
-                      ))}
-                    </select>
-                  </div>
+              <div style={{ padding: '20px' }}>
+                <div style={{ marginBottom: '16px' }}>
+                  <select value={selectedLocationFilter} onChange={e=>setSelectedLocationFilter(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '2px solid #2563eb', color: '#2563eb', fontWeight: '800', fontSize: '12px' }}>
+                    <option value="ALL">All Sri Lanka Locations</option>
+                    {sriLankaLocationsList.map(loc => (
+                      <option key={loc.id} value={loc.id}>{loc.name}</option>
+                    ))}
+                  </select>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(330px, 1fr))', gap: '25px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '16px' }}>
                   {filteredLocations.map((loc) => (
-                    <div key={loc.id} style={{ background: '#f8fafc', borderRadius: '18px', overflow: 'hidden', border: '1px solid #e2e8f0', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div key={loc.id} style={{ background: '#f8fafc', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                       <div>
-                        <div style={{ height: '160px', overflow: 'hidden' }}>
+                        <div style={{ height: '140px', overflow: 'hidden' }}>
                           <img src={loc.img} alt={loc.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
-                        <div style={{ padding: '20px' }}>
-                          <h3 style={{ fontSize: '17px', fontWeight: '900', color: '#0f172a', margin: '0 0 8px 0' }}>{loc.name}</h3>
-                          <p style={{ color: '#64748b', fontSize: '13px', margin: '0 0 12px 0', lineHeight: '1.4' }}>📍 {loc.address}</p>
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', background: '#e2e8f0', padding: '10px', borderRadius: '10px', textAlign: 'center', marginBottom: '16px' }}>
-                            <div>
-                              <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>Beds</div>
-                              <div style={{ fontSize: '13px', fontWeight: '900', color: '#0f172a' }}>{loc.beds}</div>
-                            </div>
-                            <div>
-                              <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>Doctors</div>
-                              <div style={{ fontSize: '13px', fontWeight: '900', color: '#0f172a' }}>{loc.doctors}</div>
-                            </div>
-                            <div>
-                              <div style={{ fontSize: '10px', color: '#64748b', fontWeight: '800' }}>Specialities</div>
-                              <div style={{ fontSize: '13px', fontWeight: '900', color: '#0f172a' }}>{loc.specialities}</div>
-                            </div>
-                          </div>
+                        <div style={{ padding: '14px' }}>
+                          <h3 style={{ fontSize: '14px', fontWeight: '900', color: '#0f172a', margin: '0 0 6px 0' }}>{loc.name}</h3>
+                          <p style={{ color: '#64748b', fontSize: '11px', margin: 0 }}>📍 {loc.address}</p>
                         </div>
                       </div>
-                      <div style={{ padding: '0 20px 20px 20px', display: 'flex', gap: '10px' }}>
-                        <button onClick={() => { setSelectedLocationObj(loc); setActiveTab('location_detail'); }} style={{ flex: 1, background: '#2563eb', color: '#fff', border: 'none', padding: '11px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer', fontSize: '12px' }}>LEARN MORE ➔</button>
-                        <button onClick={() => { setDoctorName(`Appointment at ${loc.name}`); setActiveTab('book'); }} style={{ flex: 1, background: '#0f172a', color: '#fff', border: 'none', padding: '11px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer', fontSize: '12px' }}>Book Here 🩺</button>
+                      <div style={{ padding: '0 14px 14px 14px', display: 'flex', gap: '8px' }}>
+                        <button onClick={() => { setSelectedLocationObj(loc); setActiveTab('location_detail'); }} style={{ flex: 1, background: '#2563eb', color: '#fff', border: 'none', padding: '8px', borderRadius: '6px', fontWeight: '900', cursor: 'pointer', fontSize: '11px' }}>LEARN MORE</button>
                       </div>
                     </div>
                   ))}
@@ -1693,28 +1580,19 @@ export default function App() {
           {/* HEALTH PACKAGES */}
           {activeTab === 'packages' && (
             <div>
-              <h2 style={{ fontSize: '30px', fontWeight: '900', color: '#f8fafc', marginBottom: '14px' }}>Health Screening Packages</h2>
+              <h2 style={{ fontSize: '22px', fontWeight: '900', color: '#f8fafc', marginBottom: '12px' }}>Health Packages</h2>
               
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '22px' }}>
-                <input type="text" placeholder="Search packages..." value={packageSearch} onChange={e=>setPackageSearch(e.target.value)} style={{ padding: '10px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', flex: 1, minWidth: '200px', background: '#fff' }} />
-                {['ALL', 'Wellness', 'Heart', 'Radiology', 'Dental'].map((cat)=>(
-                  <button key={cat} onClick={()=>setPackageCategory(cat)} style={{ padding: '10px 18px', borderRadius: '10px', border: 'none', background: packageCategory === cat ? '#2563eb' : '#ffffff', color: packageCategory === cat ? '#fff' : '#1e293b', fontWeight: '800', cursor: 'pointer' }}>
-                    {cat}
-                  </button>
-                ))}
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
                 {filteredPackages.map((pkg, idx) => (
-                  <div key={idx} className="glass-card card-hover" style={{ borderRadius: '20px', padding: '22px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div key={idx} className="glass-card card-hover" style={{ borderRadius: '14px', padding: '16px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
-                      <span style={{ background: '#dbeafe', color: '#1d4ed8', padding: '4px 10px', borderRadius: '8px', fontSize: '11px', fontWeight: '800' }}>{pkg.cat}</span>
-                      <h3 style={{ fontSize: '17px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>{pkg.title}</h3>
-                      <p style={{ color: '#64748b', fontSize: '13px', lineHeight: '1.4', marginBottom: '16px' }}>{pkg.desc}</p>
+                      <span style={{ background: '#dbeafe', color: '#1d4ed8', padding: '2px 8px', borderRadius: '6px', fontSize: '10px', fontWeight: '800' }}>{pkg.cat}</span>
+                      <h3 style={{ fontSize: '15px', fontWeight: '900', color: '#0f172a', margin: '8px 0 4px 0' }}>{pkg.title}</h3>
+                      <p style={{ color: '#64748b', fontSize: '11px', marginBottom: '12px' }}>{pkg.desc}</p>
                     </div>
                     <div>
-                      <div style={{ fontSize: '18px', fontWeight: '900', color: '#2563eb', marginBottom: '12px' }}>{pkg.price}</div>
-                      <button onClick={() => { setDoctorName(`Package: ${pkg.title}`); setActiveTab('book'); }} style={{ width: '100%', background: '#2563eb', color: '#fff', border: 'none', padding: '11px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer' }}>Select Package 🩺</button>
+                      <div style={{ fontSize: '16px', fontWeight: '900', color: '#2563eb', marginBottom: '10px' }}>{pkg.price}</div>
+                      <button onClick={() => { setDoctorName(`Package: ${pkg.title}`); setActiveTab('book'); }} style={{ width: '100%', background: '#2563eb', color: '#fff', border: 'none', padding: '8px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', fontSize: '12px' }}>Select Package 🩺</button>
                     </div>
                   </div>
                 ))}
@@ -1722,36 +1600,25 @@ export default function App() {
             </div>
           )}
 
-          {/* PATIENT REVIEWS & RATING TAB */}
+          {/* PATIENT REVIEWS TAB */}
           {activeTab === 'reviews' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '750px', margin: '0 auto' }}>
-              <span style={{ background: '#f59e0b', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>⭐ PATIENT FEEDBACK</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 20px 0' }}>Patient Reviews & Ratings</h2>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+              <span style={{ background: '#f59e0b', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>⭐ REVIEWS</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 16px 0' }}>Patient Feedback</h2>
 
-              <form onSubmit={handleAddReview} style={{ background: '#f8fafc', padding: '20px', borderRadius: '16px', border: '1px solid #cbd5e1', marginBottom: '25px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <h4 style={{ margin: 0, fontWeight: '900' }}>Leave Your Review</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <select value={reviewDoctor} onChange={e=>setReviewDoctor(e.target.value)} style={{ padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
-                    {fullDoctorsList.slice(0, 10).map((d, i)=>(<option key={i} value={d.name}>{d.name}</option>))}
-                  </select>
-                  <select value={reviewRating} onChange={e=>setReviewRating(e.target.value)} style={{ padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
-                    <option value="5">5 ⭐ - Excellent</option>
-                    <option value="4">4 ⭐ - Good</option>
-                    <option value="3">3 ⭐ - Average</option>
-                  </select>
-                </div>
-                <textarea placeholder="Write your experience..." value={reviewComment} onChange={e=>setReviewComment(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', height: '70px' }}></textarea>
-                <button type="submit" style={{ background: '#f59e0b', color: '#fff', border: 'none', padding: '10px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer' }}>Submit Review ⭐</button>
+              <form onSubmit={handleAddReview} style={{ background: '#f8fafc', padding: '14px', borderRadius: '12px', border: '1px solid #cbd5e1', marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <textarea placeholder="Write your experience..." value={reviewComment} onChange={e=>setReviewComment(e.target.value)} required style={{ width: '100%', padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', height: '60px', fontSize: '12px' }}></textarea>
+                <button type="submit" style={{ background: '#f59e0b', color: '#fff', border: 'none', padding: '8px', borderRadius: '6px', fontWeight: '900', cursor: 'pointer', fontSize: '12px' }}>Submit Review ⭐</button>
               </form>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {reviewsList.map((rev, i)=>(
-                  <div key={i} style={{ background: '#fff', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                  <div key={i} style={{ background: '#fff', padding: '12px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontWeight: '900', fontSize: '14px', color: '#0f172a' }}>{rev.name} ({rev.doctor})</span>
-                      <span style={{ color: '#f59e0b', fontWeight: '900', fontSize: '12px' }}>{rev.rating}</span>
+                      <span style={{ fontWeight: '900', fontSize: '12px', color: '#0f172a' }}>{rev.name}</span>
+                      <span style={{ color: '#f59e0b', fontWeight: '900', fontSize: '11px' }}>{rev.rating}</span>
                     </div>
-                    <p style={{ fontSize: '13px', color: '#64748b', margin: '6px 0 0 0' }}>"{rev.comment}"</p>
+                    <p style={{ fontSize: '12px', color: '#64748b', margin: '4px 0 0 0' }}>"{rev.comment}"</p>
                   </div>
                 ))}
               </div>
@@ -1760,62 +1627,50 @@ export default function App() {
 
           {/* REFERRAL SYSTEM */}
           {activeTab === 'referral' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '600px', margin: '0 auto' }}>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', marginBottom: '8px' }}>Medical Referral Network 🤝</h2>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>External doctors & clinics can securely refer patients to MedCare Speciality Centres.</p>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '500px', margin: '0 auto' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginBottom: '14px' }}>Doctor Referral Network 🤝</h2>
               
-              <form onSubmit={handleReferralSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <form onSubmit={handleReferralSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Referring Doctor Name</label>
-                  <input type="text" placeholder="Dr. ..." value={refDocName} onChange={e=>setRefDocName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Referring Doctor Name</label>
+                  <input type="text" placeholder="Dr. ..." value={refDocName} onChange={e=>setRefDocName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Mobile Number</label>
-                    <input type="text" placeholder="+94..." value={refDocMobile} onChange={e=>setRefDocMobile(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Mobile</label>
+                    <input type="text" placeholder="+94..." value={refDocMobile} onChange={e=>setRefDocMobile(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Gmail Address</label>
-                    <input type="email" placeholder="doctor@gmail.com" value={refDocEmail} onChange={e=>setRefDocEmail(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Email</label>
+                    <input type="email" placeholder="doctor@gmail.com" value={refDocEmail} onChange={e=>setRefDocEmail(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                 </div>
-                <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Target Speciality</label>
-                  <select value={refSpeciality} onChange={e=>setRefSpeciality(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #cbd5e1', background: '#fff' }}>
-                    {departmentNames.map((d, i)=>(<option key={i} value={d}>{d}</option>))}
-                  </select>
-                </div>
-                <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer' }}>
-                  {loading ? 'Submitting...' : 'Submit Referral & Send Email 🤝'}
+                <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', fontSize: '13px', cursor: 'pointer' }}>
+                  {loading ? 'Submitting...' : 'Submit Referral 🤝'}
                 </button>
               </form>
             </div>
           )}
 
-          {/* LAB REPORTS & INSTANT PDF DOWNLOAD TAB */}
+          {/* LAB REPORTS TAB */}
           {activeTab === 'reports' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '700px', margin: '0 auto' }}>
-              <span style={{ background: '#10b981', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>📥 LAB REPORTS</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>Download Lab Reports & PDF Summaries</h2>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>Enter your Patient ID (e.g., MED-14152 or any text) given during booking to instantly fetch and download your official PDF report.</p>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '550px', margin: '0 auto' }}>
+              <span style={{ background: '#10b981', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>📥 LAB REPORTS</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 14px 0' }}>Download Lab Reports</h2>
               
-              <div style={{ display: 'flex', gap: '10px', marginBottom: '22px' }}>
-                <input type="text" placeholder="Enter Patient ID (e.g. MED-54321)" value={reportId} onChange={e=>setReportId(e.target.value)} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', fontSize: '15px', background: '#fff' }} />
-                <button onClick={handleFetchReport} disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '0 24px', borderRadius: '12px', fontWeight: '900', cursor: 'pointer' }}>
-                  {loading ? 'Searching...' : 'Fetch Report 🔍'}
+              <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+                <input type="text" placeholder="Enter Patient ID (e.g. MED-54321)" value={reportId} onChange={e=>setReportId(e.target.value)} style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
+                <button onClick={handleFetchReport} disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '0 16px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', fontSize: '13px' }}>
+                  Fetch 🔍
                 </button>
               </div>
 
               {reportResult && (
-                <div style={{ background: '#f8fafc', padding: '22px', borderRadius: '16px', border: '1px solid #cbd5e1' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                    <h3 style={{ fontSize: '17px', fontWeight: '900', color: '#0f172a', margin: 0 }}>Patient: {reportResult.patient_name}</h3>
-                    <span style={{ background: '#10b981', color: '#fff', padding: '4px 10px', borderRadius: '8px', fontSize: '11px', fontWeight: '800' }}>{reportResult.result_status}</span>
-                  </div>
-                  <p style={{ color: '#64748b', fontSize: '13px', margin: '0 0 4px 0' }}><b>Test Name:</b> {reportResult.test_name}</p>
-                  <p style={{ color: '#64748b', fontSize: '13px', margin: '0 0 16px 0' }}><b>Patient ID:</b> {reportResult.patient_id}</p>
+                <div style={{ background: '#f8fafc', padding: '16px', borderRadius: '12px', border: '1px solid #cbd5e1' }}>
+                  <h3 style={{ fontSize: '14px', fontWeight: '900', color: '#0f172a', margin: '0 0 6px 0' }}>Patient: {reportResult.patient_name}</h3>
+                  <p style={{ color: '#64748b', fontSize: '12px', margin: '0 0 12px 0' }}><b>Test:</b> {reportResult.test_name}</p>
                   
-                  <button onClick={() => generatePDFReport(reportResult)} style={{ background: '#0f172a', color: '#fff', border: 'none', padding: '12px 20px', borderRadius: '10px', fontWeight: '900', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <button onClick={() => generatePDFReport(reportResult)} style={{ width: '100%', background: '#0f172a', color: '#fff', border: 'none', padding: '10px', borderRadius: '8px', fontWeight: '900', cursor: 'pointer', fontSize: '12px' }}>
                     Download Official PDF Report 📄
                   </button>
                 </div>
@@ -1825,55 +1680,54 @@ export default function App() {
 
           {/* BOOKING APPOINTMENT FORM TAB */}
           {activeTab === 'book' && (
-            <div className="glass-card" style={{ borderRadius: '24px', padding: '35px', maxWidth: '700px', margin: '0 auto' }}>
-              <span style={{ background: '#2563eb', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '11px', fontWeight: '800' }}>🩺 CLINICAL BOOKING</span>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', margin: '10px 0 6px 0' }}>Book Doctor or Package Consultation</h2>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '22px' }}>Instant Supabase booking with automated n8n Gmail confirmation and Lab ID generation.</p>
+            <div className="glass-card" style={{ borderRadius: '16px', padding: '20px', maxWidth: '550px', margin: '0 auto' }}>
+              <span style={{ background: '#2563eb', color: '#fff', padding: '4px 10px', borderRadius: '16px', fontSize: '10px', fontWeight: '800' }}>🩺 CLINICAL BOOKING</span>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', margin: '8px 0 16px 0' }}>Book Appointment</h2>
 
-              <form onSubmit={handleBookAppointment} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <form onSubmit={handleBookAppointment} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Select Department</label>
-                  <select value={selectedDept} onChange={e=>setSelectedDept(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }}>
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Department</label>
+                  <select value={selectedDept} onChange={e=>setSelectedDept(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }}>
                     {departmentNames.map((d, i)=>(<option key={i} value={d}>{d}</option>))}
                   </select>
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Doctor Name / Package Title</label>
-                  <input type="text" placeholder="e.g. Dr. Dhaval P. Darji or Package: Full Body" value={doctorName} onChange={e=>setDoctorName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Doctor Name / Package</label>
+                  <input type="text" placeholder="Dr. Name or Package" value={doctorName} onChange={e=>setDoctorName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Patient Full Name</label>
-                    <input type="text" placeholder="Enter name" value={patientName} onChange={e=>setPatientName(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Patient Name</label>
+                    <input type="text" placeholder="Enter name" value={patientName} onChange={e=>setPatientName(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Mobile Number</label>
-                    <input type="text" placeholder="+94..." value={phoneNumber} onChange={e=>setPhoneNumber(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Mobile</label>
+                    <input type="text" placeholder="+94..." value={phoneNumber} onChange={e=>setPhoneNumber(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Gmail Address</label>
-                  <input type="email" placeholder="patient@gmail.com" value={patientEmail} onChange={e=>setPatientEmail(e.target.value)} required style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                  <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Gmail Address</label>
+                  <input type="email" placeholder="patient@gmail.com" value={patientEmail} onChange={e=>setPatientEmail(e.target.value)} required style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Appointment Date</label>
-                    <input type="date" value={selectedDate} onChange={e=>setSelectedDate(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }} />
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Date</label>
+                    <input type="date" value={selectedDate} onChange={e=>setSelectedDate(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }} />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '6px', color: '#1e293b' }}>Time Slot</label>
-                    <select value={selectedTimeSlot} onChange={e=>setSelectedTimeSlot(e.target.value)} style={{ width: '100%', padding: '12px', borderRadius: '12px', border: '1px solid #cbd5e1', background: '#fff' }}>
+                    <label style={{ display: 'block', fontWeight: '800', marginBottom: '4px', fontSize: '12px' }}>Time Slot</label>
+                    <select value={selectedTimeSlot} onChange={e=>setSelectedTimeSlot(e.target.value)} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }}>
                       {timeSlotsList.map((slot, i)=>(<option key={i} value={slot}>{slot}</option>))}
                     </select>
                   </div>
                 </div>
 
-                <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '14px', borderRadius: '12px', fontWeight: '900', fontSize: '15px', cursor: 'pointer', marginTop: '8px' }}>
-                  {loading ? 'Processing Booking...' : 'Confirm Booking & Send Email 🩺'}
+                <button type="submit" disabled={loading} style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: '900', fontSize: '13px', cursor: 'pointer', marginTop: '6px' }}>
+                  {loading ? 'Processing...' : 'Confirm Booking & Send Email 🩺'}
                 </button>
               </form>
             </div>
@@ -1881,53 +1735,25 @@ export default function App() {
 
           {/* ADMIN DASHBOARD */}
           {activeTab === 'admin_dashboard' && userRole === 'admin' && (
-            <div style={{ background: '#ffffff', borderRadius: '24px', padding: '35px' }}>
-              <h2 style={{ fontSize: '26px', fontWeight: '900', color: '#0f172a', marginBottom: '22px' }}>Admin Dashboard - Supabase Realtime Logs</h2>
+            <div style={{ background: '#ffffff', borderRadius: '16px', padding: '20px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: '900', color: '#0f172a', marginBottom: '16px' }}>Admin Dashboard</h2>
               
-              <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#2563eb', marginBottom: '12px' }}>All Appointments ({appointments.length})</h3>
-              <div style={{ overflowX: 'auto', marginBottom: '35px' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: '800', color: '#2563eb', marginBottom: '10px' }}>All Appointments ({appointments.length})</h3>
+              <div style={{ overflowX: 'auto', marginBottom: '20px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                   <thead>
                     <tr style={{ background: '#f1f5f9', borderBottom: '2px solid #cbd5e1' }}>
-                      <th style={{ padding: '10px' }}>Patient Name</th>
-                      <th style={{ padding: '10px' }}>Phone</th>
-                      <th style={{ padding: '10px' }}>Email</th>
-                      <th style={{ padding: '10px' }}>Doctor / Service</th>
-                      <th style={{ padding: '10px' }}>Date & Slot</th>
+                      <th style={{ padding: '8px' }}>Name</th>
+                      <th style={{ padding: '8px' }}>Phone</th>
+                      <th style={{ padding: '8px' }}>Doctor</th>
                     </tr>
                   </thead>
                   <tbody>
                     {appointments.map((app, i)=>(
-                      <tr key={i} style={{ borderBottom: '1px solid #e2e8f0', fontSize: '13px' }}>
-                        <td style={{ padding: '10px', fontWeight: '800' }}>{app.patient_name}</td>
-                        <td style={{ padding: '10px' }}>{app.phone_number}</td>
-                        <td style={{ padding: '10px' }}>{app.Email}</td>
-                        <td style={{ padding: '10px', color: '#2563eb', fontWeight: '700' }}>{app.doctor_name || app.department}</td>
-                        <td style={{ padding: '10px' }}>{app.appointment_date}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 style={{ fontSize: '16px', fontWeight: '800', color: '#7c3aed', marginBottom: '12px' }}>All Lab Reports & Patient IDs ({labReports.length})</h3>
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                  <thead>
-                    <tr style={{ background: '#f1f5f9', borderBottom: '2px solid #cbd5e1' }}>
-                      <th style={{ padding: '10px' }}>Patient ID</th>
-                      <th style={{ padding: '10px' }}>Patient Name</th>
-                      <th style={{ padding: '10px' }}>Test / Package</th>
-                      <th style={{ padding: '10px' }}>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {labReports.map((rep, i)=>(
-                      <tr key={i} style={{ borderBottom: '1px solid #e2e8f0', fontSize: '13px' }}>
-                        <td style={{ padding: '10px', fontWeight: '900', color: '#2563eb' }}>{rep.patient_id}</td>
-                        <td style={{ padding: '10px', fontWeight: '800' }}>{rep.patient_name}</td>
-                        <td style={{ padding: '10px' }}>{rep.test_name}</td>
-                        <td style={{ padding: '10px', color: '#10b981', fontWeight: '700' }}>{rep.result_status}</td>
+                      <tr key={i} style={{ borderBottom: '1px solid #e2e8f0' }}>
+                        <td style={{ padding: '8px', fontWeight: '800' }}>{app.patient_name}</td>
+                        <td style={{ padding: '8px' }}>{app.phone_number}</td>
+                        <td style={{ padding: '8px', color: '#2563eb' }}>{app.doctor_name || app.department}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1947,55 +1773,40 @@ export default function App() {
       />
 
       {/* DARK PROFESSIONAL FOOTER COMPONENT */}
-      <footer style={{ background: '#090d16', borderTop: '1px solid #1e293b', color: '#94a3b8', padding: '50px 24px 25px 24px', marginTop: '60px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '35px', marginBottom: '40px' }}>
+      <footer style={{ background: '#090d16', borderTop: '1px solid #1e293b', color: '#94a3b8', padding: '30px 16px 20px 16px', marginTop: '40px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '24px' }}>
           
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <div style={{ width: '32px', height: '32px', background: '#2563eb', color: '#fff', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '18px' }}>+</div>
-              <h3 style={{ color: '#f8fafc', fontSize: '18px', fontWeight: '900', margin: 0 }}>MEDCARE <span style={{ color: '#60a5fa', fontSize: '11px' }}>SRI LANKA</span></h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <div style={{ width: '28px', height: '28px', background: '#2563eb', color: '#fff', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '16px' }}>+</div>
+              <h3 style={{ color: '#f8fafc', fontSize: '16px', fontWeight: '900', margin: 0 }}>MEDCARE <span style={{ color: '#60a5fa', fontSize: '10px' }}>SRI LANKA</span></h3>
             </div>
-            <p style={{ fontSize: '13px', lineHeight: '1.6', color: '#94a3b8' }}>
-              MedCare Health OS is Sri Lanka's leading autonomous healthcare network operating across Colombo, Kandy, Jaffna, Galle, Batticaloa, and international hubs in Dubai & Saudi Arabia.
+            <p style={{ fontSize: '11px', lineHeight: '1.5', color: '#94a3b8' }}>
+              MedCare Health OS is Sri Lanka's leading autonomous healthcare network operating across Colombo, Kandy, Jaffna, Galle, Batticaloa, and international hubs.
             </p>
           </div>
 
           <div>
-            <h4 style={{ color: '#f8fafc', fontSize: '15px', fontWeight: '800', marginBottom: '16px' }}>Quick Portals</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '13px', fontWeight: '800', marginBottom: '12px' }}>Quick Portals</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li onClick={() => setActiveTab('doctors')} style={{ cursor: 'pointer' }}>➔ Doctors Directory (100+)</li>
-              <li onClick={() => setActiveTab('reports')} style={{ cursor: 'pointer' }}>➔ Lab Reports & PDF Download</li>
+              <li onClick={() => setActiveTab('reports')} style={{ cursor: 'pointer' }}>➔ Lab Reports Download</li>
               <li onClick={() => setActiveTab('queue')} style={{ cursor: 'pointer' }}>➔ Live OPD Queue Tracker</li>
-              <li onClick={() => setActiveTab('pharmacy')} style={{ cursor: 'pointer' }}>➔ Prescription OCR Delivery</li>
-              <li onClick={() => setActiveTab('locations')} style={{ cursor: 'pointer' }}>➔ Sri Lanka Hospital Branches</li>
             </ul>
           </div>
 
           <div>
-            <h4 style={{ color: '#f8fafc', fontSize: '15px', fontWeight: '800', marginBottom: '16px' }}>Legal & Compliance</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <li style={{ cursor: 'pointer' }}>➔ PHSRC Registration Sri Lanka</li>
-              <li style={{ cursor: 'pointer' }}>➔ HIPAA Data Privacy Guarantee</li>
-              <li style={{ cursor: 'pointer' }}>➔ Terms of Service & Telehealth</li>
-              <li style={{ cursor: 'pointer' }}>➔ Patient Rights & Consent</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 style={{ color: '#f8fafc', fontSize: '15px', fontWeight: '800', marginBottom: '16px' }}>Health Newsletter</h4>
-            <p style={{ fontSize: '12px', lineHeight: '1.5', color: '#94a3b8', marginBottom: '12px' }}>
-              Subscribe to get seasonal health screening alerts and medical consultation discounts.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} style={{ display: 'flex', gap: '8px' }}>
+            <h4 style={{ color: '#f8fafc', fontSize: '13px', fontWeight: '800', marginBottom: '12px' }}>Newsletter</h4>
+            <form onSubmit={handleNewsletterSubmit} style={{ display: 'flex', gap: '6px' }}>
               <input 
                 type="email" 
                 placeholder="Your email address" 
                 value={newsletterEmail} 
                 onChange={e => setNewsletterEmail(e.target.value)}
                 required
-                style={{ padding: '10px', borderRadius: '8px', border: '1px solid #334155', background: '#0f172a', color: '#fff', fontSize: '12px', flex: 1 }} 
+                style={{ padding: '8px', borderRadius: '6px', border: '1px solid #334155', background: '#0f172a', color: '#fff', fontSize: '11px', flex: 1 }} 
               />
-              <button type="submit" style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '10px 14px', borderRadius: '8px', fontWeight: '800', fontSize: '12px', cursor: 'pointer' }}>
+              <button type="submit" style={{ background: '#2563eb', color: '#fff', border: 'none', padding: '8px 12px', borderRadius: '6px', fontWeight: '800', fontSize: '11px', cursor: 'pointer' }}>
                 Join
               </button>
             </form>
@@ -2003,12 +1814,11 @@ export default function App() {
 
         </div>
 
-        <div style={{ maxWidth: '1280px', margin: '0 auto', paddingTop: '20px', borderTop: '1px solid #1e293b', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px', fontSize: '12px', color: '#64748b' }}>
-          <div>© 2026 MedCare Hospitals & Health OS Sri Lanka. All Rights Reserved.</div>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', paddingTop: '16px', borderTop: '1px solid #1e293b', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', fontSize: '11px', color: '#64748b' }}>
+          <div>© 2026 MedCare Hospitals Sri Lanka. All Rights Reserved.</div>
           <div>Designed & Developed for Mufthi (HNDIT Healthcare OS)</div>
         </div>
       </footer>
-      </div>
     </div>
   );
 }
