@@ -871,7 +871,7 @@ export default function App() {
           </div>
 
           {/* Nav Items */}
-          <nav className="nav-scroll" style={{ display: 'flex', gap: '6px', overflowX: 'auto', maxWidth: '100%', padding: '2px 0' }}>
+        <nav style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', overflowX: 'auto', gap: '8px', padding: '8px', width: '100%', WebkitOverflowScrolling: 'touch' }}>
             {[
               { id: 'home', label: 'HOME' },
               { id: 'queue', label: 'LIVE QUEUE ⏱️' },
@@ -893,30 +893,31 @@ export default function App() {
             ].map((item) => {
               const isActive = activeTab === item.id;
               return (
-                <button
-                  key={item.id}
-                  onClick={item.action ? item.action : () => setActiveTab(item.id)}
-                  style={{
-                    padding: '9px 14px',
-                    borderRadius: '8px',
-                    border: 'none',
-                    background: isActive ? '#2563eb' : 'transparent',
-                    color: isActive ? '#ffffff' : '#334155',
-                    fontWeight: '800',
-                    fontSize: '13px',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    transition: 'all 0.2s'
-                  }}
-                  onMouseOver={e => { if(!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
-                  onMouseOut={e => { if(!isActive) e.currentTarget.style.background = 'transparent'; }}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
-
+  <button
+    key={item.id}
+    onClick={item.action ? item.action : () => setActiveTab(item.id)}
+    style={{
+      padding: '9px 14px',
+      borderRadius: '8px',
+      border: 'none',
+      background: isActive ? '#2563eb' : 'transparent',
+      color: isActive ? '#ffffff' : '#334155',
+      fontWeight: '800',
+      fontSize: '13px',
+      cursor: 'pointer',
+      whiteSpace: 'nowrap',
+      flexShrink: 0,
+      transition: 'all 0.2s',
+    }}
+    onMouseOver={e => { if (!isActive) e.currentTarget.style.background = '#f1f5f9'; }}
+    onMouseOut={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
+  >
+   {item.label}
+  </button>
+);
+  })
+}
+</nav>
           <button 
             onClick={() => { if (isLoggedIn) { setIsLoggedIn(false); setUserRole(null); setActiveTab('home'); } else { setShowLoginModal(true); } }} 
             style={{ background: isLoggedIn ? '#dc2626' : '#2563eb', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '10px', fontWeight: '800', cursor: 'pointer', fontSize: '13px', boxShadow: '0 4px 12px rgba(37,99,235,0.2)', whiteSpace: 'nowrap' }}
@@ -933,7 +934,7 @@ export default function App() {
                 <h3 style={{ fontSize: '16px', fontWeight: '900', color: '#0f172a', margin: 0 }}>All Medical Specialities</h3>
                 <button onClick={() => setShowSpecialitiesMenu(false)} style={{ background: 'none', border: 'none', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', color: '#ef4444' }}>Close ✖</button>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px', maxHeight: '300px', overflowY: 'auto' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '10px', maxHeight: '300px', overflowY: 'auto' }}>
                 {departmentNames.map((dept, idx) => (
                   <div key={idx} onClick={() => { setSelectedDept(dept); setActiveTab('book'); setShowSpecialitiesMenu(false); }} style={{ padding: '8px 12px', borderRadius: '8px', background: '#f8fafc', color: '#1e293b', fontSize: '13px', fontWeight: '700', cursor: 'pointer', border: '1px solid #cbd5e1', transition: 'all 0.2s' }} onMouseOver={e=>e.currentTarget.style.background='#eff6ff'} onMouseOut={e=>e.currentTarget.style.background='#f8fafc'}>
                     ● {dept}
